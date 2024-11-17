@@ -1,0 +1,12 @@
+# priv/gettext/pt_BR/LC_MESSAGES/default.po
+msgid "hello"
+msgstr "Olá"
+
+msgid "intro_text"
+msgstr "Meu nome é Adriano Bauangardt, sou Desenvolvedor Fullstack do Paraguai."
+
+msgid "contact_me"
+msgstr "Entre em contato"
+
+msgid "links"
+msgstr "links"

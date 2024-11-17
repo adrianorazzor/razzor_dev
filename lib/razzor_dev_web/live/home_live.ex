@@ -2,30 +2,20 @@ defmodule RazzorDevWeb.HomeLive do
   use RazzorDevWeb, :live_view
   use Gettext, backend: RazzorDevWeb.Gettext
 
-  require Logger
 
   def mount(_params, _session, socket) do
-    locale = Gettext.get_locale()
-    Logger.info("Initial locale: #{locale}")
-
-    {:ok, assign(socket, locale: locale)}
+    {:ok, assign(socket, :locale, Gettext.get_locale())}
   end
 
   def handle_event("change_locale", %{"locale" => locale}, socket) do
-    Logger.info("Changing locale from #{Gettext.get_locale()} to #{locale}")
-
-    # Change locale
     Gettext.put_locale(locale)
 
-    # Force re-render with new assigns
     socket = socket
     |> assign(:locale, locale)
     |> assign(:hello_text, gettext("hello"))
     |> assign(:intro_text, gettext("intro_text"))
     |> assign(:contact_text, gettext("contact_me"))
     |> assign(:links_text, gettext("links"))
-
-    Logger.info("New locale set: #{Gettext.get_locale()}")
 
     {:noreply, socket}
   end

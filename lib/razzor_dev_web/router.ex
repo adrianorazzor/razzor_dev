@@ -17,8 +17,9 @@ defmodule RazzorDevWeb.Router do
   scope "/", RazzorDevWeb do
     pipe_through :browser
 
-    get "/", PageController, :home
+    live "/", HomeLive
   end
+
 
   # Other scopes may use custom stacks.
   # scope "/api", RazzorDevWeb do

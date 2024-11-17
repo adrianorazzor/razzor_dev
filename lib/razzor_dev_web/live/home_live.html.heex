@@ -1,15 +1,18 @@
-<div class="min-h-screen p-8">
+<div class="min-h-screen p-8" id="locale-container" phx-hook="StoreLocale">
   <nav class="flex justify-between items-center">
     <div class="text-xl font-bold">ADRIANO BAUNGARDT</div>
     <div class="flex items-center space-x-6">
       <div class="flex space-x-2">
-        <button phx-click="change_locale" phx-value-locale="en" class="hover:text-gray-400">
+        <button phx-click="change_locale" phx-value-locale="en" class={[ "hover:text-gray-400 text-xl" , @locale=="en"
+          && "opacity-100" || "opacity-50" ]}>
           🇺🇸
         </button>
-        <button phx-click="change_locale" phx-value-locale="pt_BR" class="hover:text-gray-400">
+        <button phx-click="change_locale" phx-value-locale="pt_BR" class={[ "hover:text-gray-400 text-xl" ,
+          @locale=="pt_BR" && "opacity-100" || "opacity-50" ]}>
           🇧🇷
         </button>
-        <button phx-click="change_locale" phx-value-locale="es" class="hover:text-gray-400">
+        <button phx-click="change_locale" phx-value-locale="es" class={[ "hover:text-gray-400 text-xl" , @locale=="es"
+          && "opacity-100" || "opacity-50" ]}>
           🇪🇸
         </button>
       </div>

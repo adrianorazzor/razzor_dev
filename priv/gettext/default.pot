@@ -1,60 +1,77 @@
+## This file is a PO Template file.
+##
+## "msgid"s here are often extracted from source code.
+## Add new messages manually only if they're dynamic
+## messages that can't be statically extracted.
+##
+## Run "mix gettext.extract" to bring this file up to
+## date. Leave "msgstr"s empty as changing them here has no
+## effect: edit them in PO (.po) files instead.
+#
+msgid ""
+msgstr ""
+
 #: lib/razzor_dev_web/components/core_components.ex:482
 #, elixir-autogen, elixir-format
 msgid "Actions"
-msgstr "Actions"
+msgstr ""
 
 #: lib/razzor_dev_web/components/core_components.ex:160
 #, elixir-autogen, elixir-format
 msgid "Attempting to reconnect"
-msgstr "Attempting to reconnect"
+msgstr ""
 
 #: lib/razzor_dev_web/components/core_components.ex:151
 #, elixir-autogen, elixir-format
 msgid "Error!"
-msgstr "Error!"
+msgstr ""
 
 #: lib/razzor_dev_web/components/core_components.ex:172
 #, elixir-autogen, elixir-format
 msgid "Hang in there while we get back on track"
-msgstr "Hang in there while we get back on track"
+msgstr ""
 
 #: lib/razzor_dev_web/components/core_components.ex:167
 #, elixir-autogen, elixir-format
 msgid "Something went wrong!"
-msgstr "Something went wrong!"
+msgstr ""
 
 #: lib/razzor_dev_web/components/core_components.ex:150
 #, elixir-autogen, elixir-format
 msgid "Success!"
-msgstr "Success!"
+msgstr ""
 
 #: lib/razzor_dev_web/components/core_components.ex:155
 #, elixir-autogen, elixir-format
 msgid "We can't find the internet"
-msgstr "We can't find the internet"
+msgstr ""
 
 #: lib/razzor_dev_web/components/core_components.ex:76
 #: lib/razzor_dev_web/components/core_components.ex:130
 #, elixir-autogen, elixir-format
 msgid "close"
-msgstr "close"
+msgstr ""
 
-#: lib/razzor_dev_web/live/home_live.html.heex:33
+#: lib/razzor_dev_web/live/home_live.ex:25
+#: lib/razzor_dev_web/live/home_live.ex:36
 #, elixir-autogen, elixir-format
 msgid "contact_me"
-msgstr "Contact me"
+msgstr ""
 
-#: lib/razzor_dev_web/live/home_live.html.heex:27
+#: lib/razzor_dev_web/live/home_live.ex:23
+#: lib/razzor_dev_web/live/home_live.ex:34
 #, elixir-autogen, elixir-format
 msgid "hello"
-msgstr "Hello"
+msgstr ""
 
-#: lib/razzor_dev_web/live/home_live.html.heex:30
+#: lib/razzor_dev_web/live/home_live.ex:24
+#: lib/razzor_dev_web/live/home_live.ex:35
 #, elixir-autogen, elixir-format
 msgid "intro_text"
-msgstr "My name is Adriano Baungardt, I'm a Fullstack Developer From Paraguay."
+msgstr ""
 
-#: lib/razzor_dev_web/live/home_live.html.heex:20
+#: lib/razzor_dev_web/live/home_live.ex:26
+#: lib/razzor_dev_web/live/home_live.ex:37
 #, elixir-autogen, elixir-format
 msgid "links"
-msgstr "links"
+msgstr ""

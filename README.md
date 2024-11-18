@@ -1,18 +1,30 @@
-# RazzorDev
+# razzor.dev
 
-To start your Phoenix server:
+Personal website built with Elixir and Phoenix Framework. A minimalist presentation page with multilingual support (English, Portuguese, and Spanish).
 
-  * Run `mix setup` to install and setup dependencies
-  * Start Phoenix endpoint with `mix phx.server` or inside IEx with `iex -S mix phx.server`
+## Tech Stack
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+- Elixir
+- Phoenix Framework
+- Phoenix LiveView
+- TailwindCSS
+- Gettext (for internationalization)
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
+## Features
 
-## Learn more
+- Clean, minimalist design
+- Language switching (🇺🇸 EN, 🇧🇷 PT-BR, 🇪🇸 ES)
+- Responsive layout
+- Social media links
+- Contact information
 
-  * Official website: https://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix
+## Development
+
+To start the Phoenix server:
+
+```bash
+# Install dependencies
+mix deps.get
+
+# Start Phoenix endpoint
+mix phx.server

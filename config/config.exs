@@ -67,3 +67,12 @@ config :razzor_dev, RazzorDevWeb.Gettext,
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{config_env()}.exs"
+
+# Configure the Erlang node name
+node_name =
+  System.get_env("ERLANG_NODE_NAME") ||
+    raise "ERLANG_NODE_NAME environment variable is missing."
+
+config :kernel,
+  inet_dist_use_interface: {0, 0, 0, 0},
+  node: String.to_atom(node_name)

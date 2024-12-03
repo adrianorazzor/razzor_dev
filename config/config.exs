@@ -10,16 +10,18 @@ import Config
 config :razzor_dev,
   generators: [timestamp_type: :utc_datetime]
 
-# Configures the endpoint
 config :razzor_dev, RazzorDevWeb.Endpoint,
-  url: [host: "localhost"],
-  adapter: Bandit.PhoenixAdapter,
-  render_errors: [
-    formats: [html: RazzorDevWeb.ErrorHTML, json: RazzorDevWeb.ErrorJSON],
-    layout: false
+  url: [
+    host: System.get_env("HOST") || "localhost",
+    port: 443,
+    scheme: "https"
   ],
-  pubsub_server: RazzorDev.PubSub,
-  live_view: [signing_salt: "wehAnUQk"]
+  http: [
+    ip: {0, 0, 0, 0},
+    port: String.to_integer(System.get_env("PORT") || "4000")
+  ],
+  secret_key_base: System.get_env("SECRET_KEY_BASE") ||
+    raise "SECRET_KEY_BASE environment variable is missing."
 
 # Configures the mailer
 #

@@ -12,6 +12,7 @@ kill_signal = 'SIGTERM'
 [env]
   PHX_HOST = 'razzor-dev.fly.dev'
   PORT = '8080'
+  SECRET_KEY_BASE = 'fca34d61b9efb6e0'
 
 [http_service]
   internal_port = 8080

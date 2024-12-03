@@ -10,7 +10,7 @@ kill_signal = 'SIGTERM'
 [build]
 
 [env]
-  PHX_HOST = 'razzor-dev.fly.dev'
+  PHX_HOST = 'razzor.dev'
   PORT = '8080'
   ERLANG_COOKIE = "JDWKgiwUea"
 

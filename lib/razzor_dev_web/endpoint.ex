@@ -22,7 +22,7 @@ defmodule RazzorDevWeb.Endpoint do
   plug Plug.Static,
     at: "/",
     from: :razzor_dev,
-    gzip: false,
+    gzip: true,
     only: RazzorDevWeb.static_paths()
 
   # Code reloading can be explicitly enabled under the

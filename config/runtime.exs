@@ -99,4 +99,9 @@ if config_env() == :prod do
   #     config :swoosh, :api_client, Swoosh.ApiClient.Hackney
   #
   # See https://hexdocs.pm/swoosh/Swoosh.html#module-installation for details.
-end
+
+  # Short name configuration
+  config :kernel,
+    inet_dist_use_interface: {0, 0, 0, 0},
+    node: :razor_dev
+  end

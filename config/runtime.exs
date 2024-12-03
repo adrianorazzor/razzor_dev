@@ -38,13 +38,12 @@ if config_env() == :prod do
    port = String.to_integer(System.get_env("PORT") || "4000")
  
    config :razzor_dev, RazzorDevWeb.Endpoint,
-     url: [host: host, port: 443, scheme: "https"],
-     http: [
-       ip: {0, 0, 0, 0, 0, 0, 0, 0},
-       port: port
-     ],
-     server: true,
-     secret_key_base: secret_key_base
+    url: [host: System.get_env("PHX_HOST"), port: 443, scheme: "https"],
+    http: [
+      ip: {0, 0, 0, 0, 0, 0, 0, 0},
+      port: String.to_integer(System.get_env("PORT") || "4000")
+    ],
+    secret_key_base: secret_key_base
 
   # ## SSL Support
   #
@@ -95,14 +94,4 @@ if config_env() == :prod do
   #     config :swoosh, :api_client, Swoosh.ApiClient.Hackney
   #
   # See https://hexdocs.pm/swoosh/Swoosh.html#module-installation for details.
-
-   # Configure the Erlang Node Name
-   erlang_node_short_name = 
-    System.get_env("ERLANG_NODE_SHORT_NAME") || "razzor_dev"
-
-
-  # Configure the Node for Erlang Distribution
-  config :kernel,
-  inet_dist_use_interface: {0, 0, 0, 0},
-  node: String.to_atom(erlang_node_short_name)
   end

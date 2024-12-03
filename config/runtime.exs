@@ -100,8 +100,16 @@ if config_env() == :prod do
   #
   # See https://hexdocs.pm/swoosh/Swoosh.html#module-installation for details.
 
-  # Short name configuration
+   # Configure the Erlang Node Name
+   erlang_node_name =
+    System.get_env("ERLANG_NODE_NAME") ||
+      raise "ERLANG_NODE_NAME environment variable is missing."
+
+  config :razzor_dev, :erl_node,
+    name: erlang_node_name
+
+  # Configure the Node for Erlang Distribution
   config :kernel,
     inet_dist_use_interface: {0, 0, 0, 0},
-    node: :razor_dev
+    node: String.to_atom(erlang_node_name)
   end

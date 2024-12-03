@@ -10,18 +10,16 @@ import Config
 config :razzor_dev,
   generators: [timestamp_type: :utc_datetime]
 
+# Configures the endpoint
 config :razzor_dev, RazzorDevWeb.Endpoint,
-  url: [
-    host: System.get_env("HOST") || "localhost",
-    port: 443,
-    scheme: "https"
+  url: [host: "localhost"],
+  adapter: Bandit.PhoenixAdapter,
+  render_errors: [
+    formats: [html: RazzorDevWeb.ErrorHTML, json: RazzorDevWeb.ErrorJSON],
+    layout: false
   ],
-  http: [
-    ip: {0, 0, 0, 0},
-    port: String.to_integer(System.get_env("PORT") || "4000")
-  ],
-  secret_key_base: System.get_env("SECRET_KEY_BASE") ||
-    raise "SECRET_KEY_BASE environment variable is missing."
+  pubsub_server: RazzorDev.PubSub,
+  live_view: [signing_salt: "wehAnUQk"]
 
 # Configures the mailer
 #
@@ -69,12 +67,3 @@ config :razzor_dev, RazzorDevWeb.Gettext,
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{config_env()}.exs"
-
-# Configure the Erlang node name
-node_name =
-  System.get_env("ERLANG_NODE_NAME") ||
-    raise "ERLANG_NODE_NAME environment variable is missing."
-
-config :kernel,
-  inet_dist_use_interface: {0, 0, 0, 0},
-  node: String.to_atom(node_name)

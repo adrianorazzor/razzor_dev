@@ -9,7 +9,13 @@ defmodule RazzorDev.MixProject do
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: deps()
+      deps: deps(),
+      releases: [
+      razzor_dev: [
+        erl_args: "-sname razzor_dev",
+        # other release settings
+      ]
+    ]
     ]
   end
 

@@ -100,8 +100,6 @@ if config_env() == :prod do
    erlang_node_short_name = 
     System.get_env("ERLANG_NODE_SHORT_NAME") || "razzor_dev"
 
-  config :razzor_dev, :erl_node,
-    name: erlang_node_name
 
   # Configure the Node for Erlang Distribution
   config :kernel,

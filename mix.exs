@@ -77,4 +77,13 @@ defmodule RazzorDev.MixProject do
       ]
     ]
   end
+
+  def assets do
+  [
+    # ...
+    custom_paths: %{
+      "/favicon.ico" => "priv/static/favicon.ico"
+    }
+  ]
+end
 end

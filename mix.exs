@@ -9,21 +9,7 @@ defmodule RazzorDev.MixProject do
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: deps(),
-      releases: [
-        razzor_dev: [
-          include_executables_for: [:unix],
-          applications: [
-            razzor_dev: :permanent,
-            runtime_tools: :permanent
-          ],
-           erl_args: "-sname razzor_dev",
-          # Pass runtime environment variables to the release
-          config_providers: [
-            {Mix.Releases.Config.Providers.Elixir, ["${RELEASE_ROOT}/etc/config.exs"]}
-          ]
-        ]
-      ]
+      deps: deps()
     ]
   end
 

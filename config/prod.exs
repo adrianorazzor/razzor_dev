@@ -19,3 +19,12 @@ config :logger, level: :info
 
 # Runtime production configuration, including reading
 # of environment variables, is done on config/runtime.exs.
+
+# Set the node name dynamically based on the HOSTNAME environment variable
+node_name =
+  System.get_env("ERLANG_NODE_NAME") ||
+    raise "ERLANG_NODE_NAME environment variable is missing."
+
+config :kernel,
+  inet_dist_use_interface: {0, 0, 0, 0},
+  node: String.to_atom(node_name)

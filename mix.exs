@@ -11,11 +11,18 @@ defmodule RazzorDev.MixProject do
       aliases: aliases(),
       deps: deps(),
       releases: [
-      razzor_dev: [
-        erl_args: "-sname razzor_dev",
-        # other release settings
+        razzor_dev: [
+          include_executables_for: [:unix],
+          applications: [
+            razzor_dev: :permanent,
+            runtime_tools: :permanent
+          ],
+          # Pass runtime environment variables to the release
+          config_providers: [
+            {Mix.Releases.Config.Providers.Elixir, ["${RELEASE_ROOT}/etc/config.exs"]}
+          ]
+        ]
       ]
-    ]
     ]
   end
 

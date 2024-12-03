@@ -17,6 +17,7 @@ defmodule RazzorDev.MixProject do
             razzor_dev: :permanent,
             runtime_tools: :permanent
           ],
+           erl_args: "-sname razzor_dev",
           # Pass runtime environment variables to the release
           config_providers: [
             {Mix.Releases.Config.Providers.Elixir, ["${RELEASE_ROOT}/etc/config.exs"]}

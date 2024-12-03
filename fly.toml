@@ -12,7 +12,6 @@ kill_signal = 'SIGTERM'
 [env]
   PHX_HOST = 'razzor-dev.fly.dev'
   PORT = '8080'
-  SECRET_KEY_BASE = 'fca34d61b9efb6e0'
   ERLANG_COOKIE = "JDWKgiwUea"
 
 [http_service]

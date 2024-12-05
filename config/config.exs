@@ -8,6 +8,9 @@
 import Config
 
 config :razzor_dev,
+  ecto_repos: [RazzorDev.Repo]
+
+config :razzor_dev,
   generators: [timestamp_type: :utc_datetime]
 
 # Configures the endpoint

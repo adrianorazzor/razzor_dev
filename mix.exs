@@ -19,7 +19,7 @@ defmodule RazzorDev.MixProject do
   def application do
     [
       mod: {RazzorDev.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :ecto]
     ]
   end
 
@@ -33,7 +33,12 @@ defmodule RazzorDev.MixProject do
   defp deps do
     [
       {:phoenix, "~> 1.7.14"},
+      {:phoenix_ecto, "~> 4.6.3"},
       {:phoenix_html, "~> 4.1"},
+      {:ecto_sql, "~> 3.12.1"},
+      {:postgrex, "~> 0.19.3"},
+      {:ecto, "~> 3.12"},
+      {:plug_cowboy, "~> 2.0"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       # TODO bump on release to {:phoenix_live_view, "~> 1.0.0"},
       {:phoenix_live_view, "~> 1.0.0-rc.1", override: true},

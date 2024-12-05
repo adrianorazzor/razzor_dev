@@ -9,6 +9,7 @@ defmodule RazzorDev.Application do
   def start(_type, _args) do
     children = [
       RazzorDevWeb.Telemetry,
+      RazzorDev.Repo,
       {DNSCluster, query: Application.get_env(:razzor_dev, :dns_cluster_query) || :ignore},
       {Phoenix.PubSub, name: RazzorDev.PubSub},
       # Start the Finch HTTP client for sending emails
@@ -16,7 +17,7 @@ defmodule RazzorDev.Application do
       # Start a worker by calling: RazzorDev.Worker.start_link(arg)
       # {RazzorDev.Worker, arg},
       # Start to serve requests, typically the last entry
-      RazzorDevWeb.Endpoint
+      RazzorDevWeb.Endpoint,
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

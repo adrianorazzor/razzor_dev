@@ -33,8 +33,8 @@ if config_env() == :prod do
       You can generate one by calling: mix phx.gen.secret
       """
 
-  host = System.get_env("PHX_HOST") || "razzor.dev"
-  port = String.to_integer(System.get_env("PORT") || "4000")
+  _host = System.get_env("PHX_HOST") || "razzor.dev"
+  _port = String.to_integer(System.get_env("PORT") || "4000")
 
   config :razzor_dev, :dns_cluster_query, System.get_env("DNS_CLUSTER_QUERY")
 

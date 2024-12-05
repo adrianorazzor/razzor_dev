@@ -25,6 +25,11 @@ defmodule RazzorDevWeb.Router do
 
     get "/", PostController, :index
     get "/:slug", PostController, :show
+    get "/new", PostController, :new
+    post "/", PostController, :create
+    get "/:slug/edit", PostController, :edit
+    patch "/:slug", PostController, :update
+    delete "/:slug", PostController, :delete
   end
 
   # Other scopes may use custom stacks.

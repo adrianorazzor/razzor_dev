@@ -41,7 +41,8 @@ defmodule RazzorDev.MixProject do
       {:plug_cowboy, "~> 2.0"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       # TODO bump on release to {:phoenix_live_view, "~> 1.0.0"},
-      {:phoenix_live_view, "~> 1.0.0-rc.1", override: true},
+      # {:phoenix_live_view, "~> 1.0.0-rc.1", override: true},
+      {:phoenix_live_view, "~> 1.0"},
       {:floki, ">= 0.30.0", only: :test},
       {:phoenix_live_dashboard, "~> 0.8.3"},
       {:esbuild, "~> 0.8", runtime: Mix.env() == :dev},
@@ -84,11 +85,11 @@ defmodule RazzorDev.MixProject do
   end
 
   def assets do
-  [
-    # ...
-    custom_paths: %{
-      "/favicon.ico" => "priv/static/favicon.ico"
-    }
-  ]
-end
+    [
+      # ...
+      custom_paths: %{
+        "/favicon.ico" => "priv/static/favicon.ico"
+      }
+    ]
+  end
 end

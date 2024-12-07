@@ -6,7 +6,7 @@ defmodule RazzorDevWeb.PostController do
 
   def index(conn, _params) do
     posts = Blog.list_posts()
-    render(conn, :index, posts: posts)
+    render(conn, :post_listing, posts: posts)
   end
 
   def new(conn, _params) do

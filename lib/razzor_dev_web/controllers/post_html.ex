@@ -1,13 +1,7 @@
 defmodule RazzorDevWeb.PostHTML do
   use RazzorDevWeb, :html
 
-  embed_templates "post_html/*"
+  embed_templates "posts_html/*"
 
-  @doc """
-  Renders a post form.
-  """
-  attr :changeset, Ecto.Changeset, required: true
-  attr :action, :string, required: true
 
-  def post_form(assigns)
 end

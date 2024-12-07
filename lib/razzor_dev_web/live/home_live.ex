@@ -51,7 +51,7 @@ defmodule RazzorDevWeb.HomeLive do
               🇪🇸
             </button>
           </div>
-          <a href="#" class="hover:text-gray-400"><%= @links_text %></a>
+          <a href={~p"/blog"} class="hover:text-gray-400">blog</a>
         </div>
       </nav>
 

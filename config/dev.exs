@@ -4,7 +4,7 @@ config :razzor_dev, RazzorDev.Repo,
   username: "postgres",
   password: "123",
   hostname: "localhost",
-  database: "razzor_dev_dev",
+  database: "razzor_dev",
   stacktrace: true,
   show_sensitive_data_on_connection_error: true,
   pool_size: 10

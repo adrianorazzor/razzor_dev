@@ -5,6 +5,7 @@ defmodule RazzorDev.Repo.Migrations.CreatePosts do
     create table(:posts) do
       add :title, :string
       add :content, :string
+      add :author, :string
       add :slug, :string
       add :published, :boolean, default: false, null: false
       add :published_at, :naive_datetime

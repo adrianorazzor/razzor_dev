@@ -5,9 +5,11 @@ defmodule RazzorDev.Blog.Post do
   schema "posts" do
     field :title, :string
     field :content, :string
+    field :author, :string
     field :slug, :string
     field :published, :boolean, default: false
     field :published_at, :naive_datetime
+    many_to_many :tags, RazzorDev.Blog.Tag, join_through: "posts_tags"
 
     timestamps(type: :utc_datetime)
   end
@@ -15,8 +17,8 @@ defmodule RazzorDev.Blog.Post do
   @doc false
   def changeset(post, attrs) do
     post
-    |> cast(attrs, [:title, :content, :slug, :published, :published_at])
-    |> validate_required([:title, :content, :slug, :published, :published_at])
+    |> cast(attrs, [:title, :content, :tags, :author, :slug, :published, :published_at])
+    |> validate_required([:title, :content, :tags, :author, :slug, :published, :published_at])
     |> generate_slug()
   end
 

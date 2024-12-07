@@ -7,6 +7,7 @@ defmodule RazzorDev.Blog do
   alias RazzorDev.Repo
 
   alias RazzorDev.Blog.Post
+  alias RazzorDev.Blog.Tag
 
   @doc """
   Returns the list of posts.
@@ -101,4 +102,28 @@ defmodule RazzorDev.Blog do
   def change_post(%Post{} = post, attrs \\ %{}) do
     Post.changeset(post, attrs)
   end
+
+  def list_tags do
+    Repo.all(from t in Tag, select: t.name)
+  end
+
+  def get_tag!(id), do: Repo.get!(Tag, id)
+
+  def create_tag(attrs \\ %{}) do
+    %Tag{}
+    |> Tag.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  def update_tag(%Tag{} = tag, attrs) do
+    tag
+    |> Tag.changeset(attrs)
+    |> Repo.update()
+  end
+
+  def delete_tag(%Tag{} = tag) do
+    Repo.delete(tag)
+  end
+
+
 end

@@ -3,7 +3,11 @@ defmodule RazzorDevWeb.HomeLive do
   use Gettext, backend: RazzorDevWeb.Gettext
 
   def mount(_params, _session, socket) do
-    {:ok, assign(socket, :locale, Gettext.get_locale())}
+    socket = socket
+    |> assign(:page_title, "Home - RazzorDev")
+    |> assign(:page_description, "Adriano Razzor personal website")
+    |> assign(:locale, Gettext.get_locale())
+    {:ok, socket}
   end
 
   def handle_event("change_locale", %{"locale" => locale}, socket) do
@@ -27,9 +31,6 @@ defmodule RazzorDevWeb.HomeLive do
     assigns = assign_new(assigns, :links_text, fn -> gettext("links") end)
 
     ~H"""
-    <head>
-      <title>RazzorDev</title>
-    </head>
       <div class="flex flex-col justify-center items-start min-h-[80vh] max-w-md mx-auto">
         <h1 class="text-4xl font-bold mb-4">{@hello_text}</h1>
         <p class="text-xl mb-4">

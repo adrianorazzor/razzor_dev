@@ -7,7 +7,10 @@ defmodule RazzorDevWeb.PostController do
   def index(conn, _params) do
     posts = Blog.list_posts()
     tags = Blog.list_tags()
-    render(conn, :post_listing, posts: posts, tags: tags, locale: Gettext.get_locale())
+    conn
+    |> assign(:page_title, "All posts - RazzorDev Blog")
+    |> assign(:page_description, "Adriano Razzor personal blog")
+    |> render(:post_listing, posts: posts, tags: tags, locale: Gettext.get_locale())
   end
 
   def new(conn, _params) do

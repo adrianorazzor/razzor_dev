@@ -26,7 +26,6 @@ defmodule RazzorDevWeb.PostController do
         |> redirect(to: ~p"/blog/")
 
       {:error, %Ecto.Changeset{} = changeset} ->
-        IO.inspect(changeset.errors)
         render(conn, :new, changeset: changeset)
     end
   end
@@ -68,17 +67,19 @@ defmodule RazzorDevWeb.PostController do
   defp parse_tags(nil), do: []
 
   defp parse_tags(tags_string) do
-  tags_string
-  |> String.split(",")
-  |> Enum.map(&String.trim/1)
-  |> Enum.reject(&(&1 == ""))
-  |> Enum.map(fn name ->
-    case Blog.get_tag_by_name(name) do
-      nil ->
-        {:ok, tag} = Blog.create_tag(%{name: name})
-        tag
-      tag -> tag
-    end
-  end)
-end
+    tags_string
+    |> String.split(",")
+    |> Enum.map(&String.trim/1)
+    |> Enum.reject(&(&1 == ""))
+    |> Enum.map(fn name ->
+      case Blog.get_tag_by_name(name) do
+        nil ->
+          {:ok, tag} = Blog.create_tag(%{name: name})
+          tag
+
+        tag ->
+          tag
+      end
+    end)
+  end
 end

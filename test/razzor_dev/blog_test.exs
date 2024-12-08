@@ -21,7 +21,13 @@ defmodule RazzorDev.BlogTest do
     end
 
     test "create_post/1 with valid data creates a post" do
-      valid_attrs = %{title: "some title", content: "some content", slug: "some slug", published: true, published_at: ~N[2024-12-04 01:23:00]}
+      valid_attrs = %{
+        title: "some title",
+        content: "some content",
+        slug: "some slug",
+        published: true,
+        published_at: ~N[2024-12-04 01:23:00]
+      }
 
       assert {:ok, %Post{} = post} = Blog.create_post(valid_attrs)
       assert post.title == "some title"
@@ -37,7 +43,14 @@ defmodule RazzorDev.BlogTest do
 
     test "update_post/2 with valid data updates the post" do
       post = post_fixture()
-      update_attrs = %{title: "some updated title", content: "some updated content", slug: "some updated slug", published: false, published_at: ~N[2024-12-05 01:23:00]}
+
+      update_attrs = %{
+        title: "some updated title",
+        content: "some updated content",
+        slug: "some updated slug",
+        published: false,
+        published_at: ~N[2024-12-05 01:23:00]
+      }
 
       assert {:ok, %Post{} = post} = Blog.update_post(post, update_attrs)
       assert post.title == "some updated title"

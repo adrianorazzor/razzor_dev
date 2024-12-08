@@ -3,8 +3,20 @@ defmodule RazzorDevWeb.PostControllerTest do
 
   import RazzorDev.BlogFixtures
 
-  @create_attrs %{title: "some title", content: "some content", slug: "some slug", published: true, published_at: ~N[2024-12-04 01:23:00]}
-  @update_attrs %{title: "some updated title", content: "some updated content", slug: "some updated slug", published: false, published_at: ~N[2024-12-05 01:23:00]}
+  @create_attrs %{
+    title: "some title",
+    content: "some content",
+    slug: "some slug",
+    published: true,
+    published_at: ~N[2024-12-04 01:23:00]
+  }
+  @update_attrs %{
+    title: "some updated title",
+    content: "some updated content",
+    slug: "some updated slug",
+    published: false,
+    published_at: ~N[2024-12-05 01:23:00]
+  }
   @invalid_attrs %{title: nil, content: nil, slug: nil, published: nil, published_at: nil}
 
   describe "index" do

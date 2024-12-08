@@ -104,7 +104,7 @@ defmodule RazzorDev.Blog do
   end
 
   def list_tags do
-    Repo.all(from t in Tag, select: t.name)
+    Repo.all(from(t in Tag, select: t.name))
   end
 
   def get_tag!(id), do: Repo.get!(Tag, id)
@@ -128,6 +128,4 @@ defmodule RazzorDev.Blog do
   def get_tag_by_name(name) do
     Repo.get_by(Tag, name: name)
   end
-
-
 end

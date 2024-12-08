@@ -1,28 +1,28 @@
 <.header>
-  Post <%= @post.id %>
-    <:subtitle>This is a post record from your database.</:subtitle>
-    <:actions>
-      <.link href={~p"/blog/#{@post}/edit"}>
-        <.button>Edit post</.button>
-      </.link>
-    </:actions>
+  Post {@post.id}
+  <:subtitle>This is a post record from your database.</:subtitle>
+  <:actions>
+    <.link href={~p"/blog/#{@post}/edit"}>
+      <.button>Edit post</.button>
+    </.link>
+  </:actions>
 </.header>
 
 <.list>
   <:item title="Title">
-    <%= @post.title %>
+    {@post.title}
   </:item>
   <:item title="Content">
-    <%= @post.content %>
+    {@post.content}
   </:item>
   <:item title="Slug">
-    <%= @post.slug %>
+    {@post.slug}
   </:item>
   <:item title="Published">
-    <%= @post.published %>
+    {@post.published}
   </:item>
   <:item title="Published at">
-    <%= @post.published_at %>
+    {@post.published_at}
   </:item>
 </.list>
 

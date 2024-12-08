@@ -32,21 +32,21 @@ defmodule RazzorDev.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:phoenix, "~> 1.7.14"},
+      {:phoenix, "~> 1.7.17"},
       {:phoenix_ecto, "~> 4.6.3"},
       {:phoenix_html, "~> 4.1"},
       {:ecto_sql, "~> 3.12.1"},
       {:postgrex, "~> 0.19.3"},
-      {:ecto, "~> 3.12"},
-      {:plug_cowboy, "~> 2.0"},
-      {:phoenix_live_reload, "~> 1.2", only: :dev},
+      {:ecto, "~> 3.12.5"},
+      {:plug_cowboy, "~> 2.7.2"},
+      {:phoenix_live_reload, "~> 1.5.3", only: :dev},
       # TODO bump on release to {:phoenix_live_view, "~> 1.0.0"},
       # {:phoenix_live_view, "~> 1.0.0-rc.1", override: true},
       {:phoenix_live_view, "~> 1.0"},
-      {:floki, ">= 0.30.0", only: :test},
-      {:phoenix_live_dashboard, "~> 0.8.3"},
-      {:esbuild, "~> 0.8", runtime: Mix.env() == :dev},
-      {:tailwind, "~> 0.2", runtime: Mix.env() == :dev},
+      {:floki, ">= 0.37.0", only: :test},
+      {:phoenix_live_dashboard, "~> 0.8.5"},
+      {:esbuild, "~> 0.8.2", runtime: Mix.env() == :dev},
+      {:tailwind, "~> 0.2.4", runtime: Mix.env() == :dev},
       {:heroicons,
        github: "tailwindlabs/heroicons",
        tag: "v2.1.1",
@@ -55,13 +55,14 @@ defmodule RazzorDev.MixProject do
        compile: false,
        depth: 1},
       {:swoosh, "~> 1.5"},
-      {:finch, "~> 0.13"},
+      {:finch, "~> 0.19"},
       {:telemetry_metrics, "~> 1.0"},
       {:telemetry_poller, "~> 1.0"},
-      {:gettext, "~> 0.20"},
-      {:jason, "~> 1.2"},
+      {:gettext, "~> 0.26.2"},
+      {:jason, "~> 1.4.4"},
       {:dns_cluster, "~> 0.1.1"},
-      {:bandit, "~> 1.5"}
+      {:bandit, "~> 1.6.0"},
+      {:credo, "~> 1.7", only: [:dev, :test], runtime: false}
     ]
   end
 

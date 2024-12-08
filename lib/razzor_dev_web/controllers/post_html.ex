@@ -3,5 +3,4 @@ defmodule RazzorDevWeb.PostHTML do
   use Gettext, backend: RazzorDevWeb.Gettext
 
   embed_templates "posts_html/*"
-
 end

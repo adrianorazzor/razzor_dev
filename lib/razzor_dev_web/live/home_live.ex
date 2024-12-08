@@ -1,7 +1,6 @@
 defmodule RazzorDevWeb.HomeLive do
   use RazzorDevWeb, :live_view
   use Gettext, backend: RazzorDevWeb.Gettext
-  alias RazzorDevWeb.CoreComponents
 
   def mount(_params, _session, socket) do
     {:ok, assign(socket, :locale, Gettext.get_locale())}
@@ -28,8 +27,9 @@ defmodule RazzorDevWeb.HomeLive do
     assigns = assign_new(assigns, :links_text, fn -> gettext("links") end)
 
     ~H"""
-    <div class="min-h-screen p-8">
-      {CoreComponents.nav(assigns)}
+    <head>
+      <title>RazzorDev</title>
+    </head>
       <div class="flex flex-col justify-center items-start min-h-[80vh] max-w-md mx-auto">
         <h1 class="text-4xl font-bold mb-4">{@hello_text}</h1>
         <p class="text-xl mb-4">
@@ -51,7 +51,6 @@ defmodule RazzorDevWeb.HomeLive do
           </a>
         </div>
       </div>
-    </div>
     """
   end
 end

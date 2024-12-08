@@ -1,6 +1,8 @@
 defmodule RazzorDevWeb.HomeLive do
   use RazzorDevWeb, :live_view
   use Gettext, backend: RazzorDevWeb.Gettext
+  alias RazzorDevWeb.CoreComponents
+
 
 
   def mount(_params, _session, socket) do
@@ -28,33 +30,7 @@ defmodule RazzorDevWeb.HomeLive do
 
     ~H"""
     <div class="min-h-screen p-8">
-      <nav class="flex justify-between items-center">
-        <div class="text-xl font-bold">ADRIANO BAUNGARDT</div>
-        <div class="flex items-center space-x-6">
-          <div class="flex space-x-2">
-            <button phx-click="change_locale" phx-value-locale="en" class={[
-              "hover:text-gray-400 text-xl",
-              @locale == "en" && "opacity-100" || "opacity-50"
-            ]}>
-              🇺🇸
-            </button>
-            <button phx-click="change_locale" phx-value-locale="pt_BR" class={[
-              "hover:text-gray-400 text-xl",
-              @locale == "pt_BR" && "opacity-100" || "opacity-50"
-            ]}>
-              🇧🇷
-            </button>
-            <button phx-click="change_locale" phx-value-locale="es" class={[
-              "hover:text-gray-400 text-xl",
-              @locale == "es" && "opacity-100" || "opacity-50"
-            ]}>
-              🇪🇸
-            </button>
-          </div>
-          <a href={~p"/blog"} class="hover:text-gray-400">blog</a>
-        </div>
-      </nav>
-
+    <%= CoreComponents.nav(assigns) %>
       <div class="flex flex-col justify-center items-start min-h-[80vh] max-w-md mx-auto">
         <h1 class="text-4xl font-bold mb-4"><%= @hello_text %></h1>
         <p class="text-xl mb-4">

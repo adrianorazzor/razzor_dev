@@ -125,5 +125,9 @@ defmodule RazzorDev.Blog do
     Repo.delete(tag)
   end
 
+  def get_tag_by_name(name) do
+    Repo.get_by(Tag, name: name)
+  end
+
 
 end

@@ -1,58 +1,68 @@
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-  <h1 class="text-4xl font-bold mb-8 text-white">Listing all posts</h1>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 bg-gray-900 text-white">
+  <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+    <!-- Left Column: Posts -->
+    <div class="lg:col-span-3">
+      <h1 class="text-4xl font-bold mb-8">Listing all posts</h1>
 
-  <div class="grid grid-cols-1 gap-8">
-    <%= for post <- @posts do %>
-      <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg">
-        <div class="p-6 flex items-start space-x-6">
-          <div class="flex-shrink-0 w-48 h-48">
-            <img src={post.image} alt={post.title} class="w-full h-full object-cover rounded-lg" />
-          </div>
+      <div class="space-y-8">
+        <%= for post <- @posts do %>
+          <div class="bg-gray-800 rounded-lg overflow-hidden shadow-md">
+            <div class="p-4 flex items-start space-x-6">
+              <div class="w-32 h-32 md:w-48 md:h-48 flex-shrink-0">
+                <img src="" alt={post.title} class="w-full h-full object-cover rounded-md" />
+              </div>
 
-          <div class="flex-1">
-            <h2 class="text-2xl font-bold text-white mb-2">
-              <%= post.title %>
-            </h2>
-
-            <div class="text-gray-400 text-sm mb-4">
-              by <%= post.author %> • <%= post.date %>
+              <div class="flex-1">
+                <h2 class="text-2xl font-bold mb-2">
+                  <%= post.title %>
+                </h2>
+                <div class="text-gray-400 text-sm mb-3">
+                  by <%= post.author %> • <%= post.published_at %>
+                </div>
+                <p class="text-gray-300 mb-4 line-clamp-2">
+                  <%= "test" %>
+                </p>
+                <div class="flex">
+                  <.link href={~p"/blog/#{post.slug}"}
+                    class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-md transition duration-200">
+                    Read More
+                  </.link>
+                </div>
+              </div>
             </div>
-
-            <p class="text-gray-300 mb-4">
-              <%= post.excerpt %>
-            </p>
-
-            <div class="flex justify-end">
-              <.link href={~p"/blog/#{post.slug}"}
-                class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-md">
-                Read More
-              </.link>
-            </div>
           </div>
-        </div>
-      </div>
-      <% end %>
-  </div>
-
-  <div class="mt-8">
-    <div class="bg-gray-800 rounded-lg p-6">
-      <h2 class="text-xl font-bold text-white mb-4">Search</h2>
-      <div class="flex space-x-2">
-        <input type="text" class="flex-1 bg-gray-700 text-white rounded-md px-4 py-2" placeholder="Search for..." />
-        <button class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-md">
-          Search
-        </button>
+          <% end %>
       </div>
     </div>
 
-    <div class="mt-8 bg-gray-800 rounded-lg p-6">
-      <h2 class="text-xl font-bold text-white mb-4">Tags</h2>
-      <div class="flex flex-wrap gap-2">
-        <%= for tag <- @tags do %>
-          <.link href="#" class="text-gray-300 hover:text-white text-sm">
-            <%= tag %>
-          </.link>
-          <% end %>
+    <!-- Right Column: Search & Tags -->
+    <div class="space-y-8">
+      <!-- Search Section -->
+      <div class="bg-gray-800 rounded-lg p-6">
+        <h2 class="text-xl font-bold mb-4">Search</h2>
+        <div class="flex items-center gap-2">
+          <input type="text" class="w-full bg-gray-700 text-white rounded-md px-4 py-2 focus:outline-none"
+            placeholder="Search for..." />
+          <button
+            class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-md transition duration-200 whitespace-nowrap">
+            Search
+          </button>
+        </div>
+
+
+      </div>
+
+      <!-- Tags Section -->
+      <div class="bg-gray-800 rounded-lg p-6">
+        <h2 class="text-xl font-bold mb-4">Tags</h2>
+        <div class="flex flex-wrap gap-2">
+          <%= for tag <- @tags do %>
+            <.link href="#"
+              class="bg-gray-700 hover:bg-gray-600 text-gray-300 hover:text-white text-sm px-2 py-1 rounded-md transition duration-200">
+              <%= tag %>
+            </.link>
+            <% end %>
+        </div>
       </div>
     </div>
   </div>

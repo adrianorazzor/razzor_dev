@@ -1,4 +1,6 @@
 defmodule RazzorDevWeb.CoreComponents do
+  @router RazzorDevWeb.Router
+  @endpoint RazzorDevWeb.Endpoint
   @moduledoc """
   Provides core UI components.
 
@@ -15,6 +17,7 @@ defmodule RazzorDevWeb.CoreComponents do
   Icons are provided by [heroicons](https://heroicons.com). See `icon/1` for usage.
   """
   use Phoenix.Component
+  import Phoenix.VerifiedRoutes
   use Gettext, backend: RazzorDevWeb.Gettext
 
   alias Phoenix.LiveView.JS
@@ -672,5 +675,40 @@ defmodule RazzorDevWeb.CoreComponents do
   """
   def translate_errors(errors, field) when is_list(errors) do
     for {^field, {msg, opts}} <- errors, do: translate_error({msg, opts})
+  end
+
+   def nav(assigns) do
+    assigns = Enum.into(assigns, %{})
+    locale = Map.get(assigns, :locale, Gettext.get_locale())
+    assigns = Map.put(assigns, :locale, locale)
+
+    ~H"""
+    <nav class="flex justify-between items-center">
+      <div class="text-xl font-bold">ADRIANO BAUNGARDT</div>
+      <div class="flex items-center space-x-6">
+        <div class="flex space-x-2">
+          <button phx-click="change_locale" phx-value-locale="en" class={[
+            "hover:text-gray-400 text-xl",
+            @locale == "en" && "opacity-100" || "opacity-50"
+          ]}>
+            🇺🇸
+          </button>
+          <button phx-click="change_locale" phx-value-locale="pt_BR" class={[
+            "hover:text-gray-400 text-xl",
+            @locale == "pt_BR" && "opacity-100" || "opacity-50"
+          ]}>
+            🇧🇷
+          </button>
+          <button phx-click="change_locale" phx-value-locale="es" class={[
+            "hover:text-gray-400 text-xl",
+            @locale == "es" && "opacity-100" || "opacity-50"
+          ]}>
+            🇪🇸
+          </button>
+        </div>
+        <.link navigate={~p"/blog"} class="hover:text-gray-400">Blog</.link>
+      </div>
+    </nav>
+    """
   end
 end

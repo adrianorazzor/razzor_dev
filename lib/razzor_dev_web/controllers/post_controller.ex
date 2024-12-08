@@ -7,22 +7,26 @@ defmodule RazzorDevWeb.PostController do
   def index(conn, _params) do
     posts = Blog.list_posts()
     tags = Blog.list_tags()
-    render(conn, :post_listing, posts: posts, tags: tags)
+    render(conn, :post_listing, posts: posts, tags: tags, locale: Gettext.get_locale())
   end
 
   def new(conn, _params) do
-    changeset = Blog.change_post(%Post{})
+    changeset = Blog.change_post(%Post{tags: []})
     render(conn, :new, changeset: changeset)
   end
 
   def create(conn, %{"post" => post_params}) do
+    tags = parse_tags(post_params["tags"])
+    post_params = Map.put(post_params, "tags", tags)
+
     case Blog.create_post(post_params) do
-      {:ok, post} ->
+      {:ok, _post} ->
         conn
         |> put_flash(:info, "Post created successfully.")
-        |> redirect(to: ~p"/blog/#{post}")
+        |> redirect(to: ~p"/blog/")
 
       {:error, %Ecto.Changeset{} = changeset} ->
+        IO.inspect(changeset.errors)
         render(conn, :new, changeset: changeset)
     end
   end
@@ -60,4 +64,21 @@ defmodule RazzorDevWeb.PostController do
     |> put_flash(:info, "Post deleted successfully.")
     |> redirect(to: ~p"/blog")
   end
+
+  defp parse_tags(nil), do: []
+
+  defp parse_tags(tags_string) do
+  tags_string
+  |> String.split(",")
+  |> Enum.map(&String.trim/1)
+  |> Enum.reject(&(&1 == ""))
+  |> Enum.map(fn name ->
+    case Blog.get_tag_by_name(name) do
+      nil ->
+        {:ok, tag} = Blog.create_tag(%{name: name})
+        tag
+      tag -> tag
+    end
+  end)
+end
 end

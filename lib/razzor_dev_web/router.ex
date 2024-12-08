@@ -24,12 +24,12 @@ defmodule RazzorDevWeb.Router do
     pipe_through :browser
 
     get "/", PostController, :index
-    get "/:slug", PostController, :show
     get "/new", PostController, :new
     post "/", PostController, :create
-    get "/:slug/edit", PostController, :edit
-    patch "/:slug", PostController, :update
-    delete "/:slug", PostController, :delete
+    get "/:id", PostController, :show
+    get "/:id/edit", PostController, :edit
+    patch "/:id", PostController, :update
+    delete "/:id", PostController, :delete
   end
 
   # Other scopes may use custom stacks.

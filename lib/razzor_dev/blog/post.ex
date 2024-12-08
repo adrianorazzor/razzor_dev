@@ -17,8 +17,9 @@ defmodule RazzorDev.Blog.Post do
   @doc false
   def changeset(post, attrs) do
     post
-    |> cast(attrs, [:title, :content, :tags, :author, :slug, :published, :published_at])
-    |> validate_required([:title, :content, :tags, :author, :slug, :published, :published_at])
+    |> cast(attrs, [:title, :content, :author, :slug, :published, :published_at])
+    |> put_assoc(:tags, attrs["tags"] || [])
+    |> validate_required([:title, :content, :author, :slug, :published, :published_at])
     |> generate_slug()
   end
 

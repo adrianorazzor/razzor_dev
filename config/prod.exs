@@ -17,5 +17,9 @@ config :swoosh, local: false
 # Do not print debug messages in production
 config :logger, level: :info
 
+config :razzor_dev, RazzorDev.Repo,
+  ssl: true,
+  ssl_opts: [verify: :verify_none]
+
 # Runtime production configuration, including reading
 # of environment variables, is done on config/runtime.exs.

@@ -9,9 +9,7 @@ defmodule RazzorDev.Release do
     Application.ensure_all_started(:razzor_dev)
 
     path = Application.app_dir(@app, "priv/repo/migrations")
-    IO.puts("Running migrations for #{@app}")
-    Ecto.Migrator.run(RazzorDev.Repo, path, :up, all: true)
 
-    IO.puts("Migrations complete")
+    Ecto.Migrator.run(RazzorDev.Repo, path, :up, all: true)
   end
 end

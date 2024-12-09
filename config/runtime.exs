@@ -48,7 +48,15 @@ if config_env() == :prod do
 
   config :razzor_dev, RazzorDev.Repo,
     url: System.get_env("DATABASE_URL"),
-    pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10")
+    pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10"),
+    ssl: false,
+    socket_options: [:inet6],
+    pool_timeout: 5_000,
+    queue_target: 5_000,
+    queue_interval: 10_000,
+    ssl_opts: [
+      verify: :verify_none
+    ]
 
   # ## SSL Support
   #

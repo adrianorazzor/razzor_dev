@@ -14,7 +14,6 @@ defmodule RazzorDevWeb.Router do
     plug :fetch_current_user
   end
 
-
   def assign_default_page_info(conn, _opts) do
     conn
     |> assign(:locale, Gettext.get_locale())

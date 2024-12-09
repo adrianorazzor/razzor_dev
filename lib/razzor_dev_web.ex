@@ -54,7 +54,7 @@ defmodule RazzorDevWeb do
       use Phoenix.LiveView,
         layout: {RazzorDevWeb.Layouts, :app}
 
-        on_mount {RazzorDevWeb.LiveViewHooks, :assign_default_page_info}
+      on_mount {RazzorDevWeb.LiveViewHooks, :assign_default_page_info}
 
       unquote(html_helpers())
     end

@@ -7,6 +7,7 @@ defmodule RazzorDevWeb.PostController do
   def index(conn, _params) do
     posts = Blog.list_posts()
     tags = Blog.list_tags()
+
     conn
     |> assign(:page_title, "All posts - RazzorDev Blog")
     |> assign(:page_description, "Adriano Razzor personal blog")

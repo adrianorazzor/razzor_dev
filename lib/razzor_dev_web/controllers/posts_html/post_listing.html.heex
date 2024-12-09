@@ -22,50 +22,53 @@
                   {"test"}
                 </p>
                 <div class="flex">
-                  <.link href={~p"/blog/#{post.slug}"}
-                    class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-md transition duration-200">
+                  <.link
+                    href={~p"/blog/#{post.slug}"}
+                    class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-md transition duration-200"
+                  >
                     Read More
                   </.link>
                 </div>
               </div>
             </div>
           </div>
-          <% end %>
+        <% end %>
       </div>
     </div>
-
-    <!-- Right Column: Search & Tags -->
+    
+<!-- Right Column: Search & Tags -->
     <div class="flex flex-col gap-6">
       <!-- Search Section -->
-      <div
-        class="rounded-lg dark:bg-zinc-900/70 shadow dark:shadow-none dark:backdrop-blur dark:border dark:border-white/10">
+      <div class="rounded-lg dark:bg-zinc-900/70 shadow dark:shadow-none dark:backdrop-blur dark:border dark:border-white/10">
         <div class="rounded-t-lg px-5 py-1 bg-zinc-100 dark:bg-zinc-800">
           <h2 class="font-bold">Search</h2>
         </div>
         <div class="flex items-center gap-2 p-4">
-          <input type="text"
+          <input
+            type="text"
             class="text-sm border border-zinc-200 dark:border-zinc-600 rounded-md w-full dark:bg-zinc-800"
-            placeholder="Search for..." />
-          <button
-            class="border border-zinc-200 dark:border-zinc-600 rounded-md px-4 py-1.5 hover:bg-zinc-50 dark:hover:bg-zinc-800">
+            placeholder="Search for..."
+          />
+          <button class="border border-zinc-200 dark:border-zinc-600 rounded-md px-4 py-1.5 hover:bg-zinc-50 dark:hover:bg-zinc-800">
             Search
           </button>
         </div>
       </div>
-
-      <!-- Tags Section -->
-      <div
-        class="rounded-lg dark:bg-zinc-900/70 shadow dark:shadow-none dark:backdrop-blur dark:border dark:border-white/10">
+      
+<!-- Tags Section -->
+      <div class="rounded-lg dark:bg-zinc-900/70 shadow dark:shadow-none dark:backdrop-blur dark:border dark:border-white/10">
         <div class="rounded-t-lg px-5 py-1 bg-zinc-100 dark:bg-zinc-800">
           <h2 class="font-bold">Tags</h2>
         </div>
         <div class="flex items-center gap-2 p-4">
           <%= for tag <- @tags do %>
-            <.link href="#"
-              class="bg-gray-700 hover:bg-gray-600 text-gray-300 hover:text-white text-sm px-2 py-1 rounded-md transition duration-200">
+            <.link
+              href="#"
+              class="bg-gray-700 hover:bg-gray-600 text-gray-300 hover:text-white text-sm px-2 py-1 rounded-md transition duration-200"
+            >
               {tag}
             </.link>
-            <% end %>
+          <% end %>
         </div>
       </div>
     </div>

@@ -6,36 +6,63 @@
         <h1 class="text-xl font-bold">ADRIANO BAUNGARDT</h1>
       </a>
     </div>
-
-    <!-- Center div -->
-    <nav class="flex-1 flex justify-center items-center space-x-8" role="navigation" aria-label="Primary">
+    
+<!-- Center div -->
+    <nav
+      class="flex-1 flex justify-center items-center space-x-8"
+      role="navigation"
+      aria-label="Primary"
+    >
       <.link navigate={~p"/blog"} class="hover:text-gray-400">Blog</.link>
       <.link navigate={~p"/blog"} class="hover:text-gray-400">Contact</.link>
       <.link navigate={~p"/blog"} class="hover:text-gray-400">About</.link>
     </nav>
-
-    <!-- Right div -->
+    
+<!-- Right div -->
     <div class="flex-1 flex justify-end items-center space-x-6">
       <nav class="flex space-x-2" aria-label="Language selector">
         <ul class="flex space-x-2">
           <li>
-            <button phx-click="change_locale" phx-value-locale="en" aria-label="Switch to English"
-              aria-pressed={@locale=="en" } class={["hover:text-gray-400 text-xl", (@locale=="en" && "opacity-100" )
-              || "opacity-50" ]}>
+            <button
+              phx-click="change_locale"
+              phx-value-locale="en"
+              aria-label="Switch to English"
+              aria-pressed={@locale == "en"}
+              class={[
+                "hover:text-gray-400 text-xl",
+                (@locale == "en" && "opacity-100") ||
+                  "opacity-50"
+              ]}
+            >
               <span role="img" aria-label="USA flag">🇺🇸</span>
             </button>
           </li>
           <li>
-            <button phx-click="change_locale" phx-value-locale="pt_BR" aria-label="Switch to Portuguese"
-              aria-pressed={@locale=="pt_BR" } class={["hover:text-gray-400 text-xl", (@locale=="pt_BR" && "opacity-100"
-              ) || "opacity-50" ]}>
+            <button
+              phx-click="change_locale"
+              phx-value-locale="pt_BR"
+              aria-label="Switch to Portuguese"
+              aria-pressed={@locale == "pt_BR"}
+              class={[
+                "hover:text-gray-400 text-xl",
+                (@locale == "pt_BR" && "opacity-100") || "opacity-50"
+              ]}
+            >
               <span role="img" aria-label="Brazil flag">🇧🇷</span>
             </button>
           </li>
           <li>
-            <button phx-click="change_locale" phx-value-locale="es" aria-label="Switch to Spanish"
-              aria-pressed={@locale=="es" } class={["hover:text-gray-400 text-xl", (@locale=="es" && "opacity-100" )
-              || "opacity-50" ]}>
+            <button
+              phx-click="change_locale"
+              phx-value-locale="es"
+              aria-label="Switch to Spanish"
+              aria-pressed={@locale == "es"}
+              class={[
+                "hover:text-gray-400 text-xl",
+                (@locale == "es" && "opacity-100") ||
+                  "opacity-50"
+              ]}
+            >
               <span role="img" aria-label="Spain flag">🇪🇸</span>
             </button>
           </li>

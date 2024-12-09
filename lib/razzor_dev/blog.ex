@@ -38,6 +38,14 @@ defmodule RazzorDev.Blog do
   """
   def get_post!(id), do: Repo.get!(Post, id)
 
+  def get_post_by_slug!(slug) do
+    Repo.get_by(Post, slug: slug)
+    |> case do
+      nil -> raise Ecto.NoResultsError
+      post -> post
+    end
+  end
+
   @doc """
   Creates a post.
 

@@ -1,13 +1,25 @@
 defmodule RazzorDevWeb.Router do
   use RazzorDevWeb, :router
 
+  import RazzorDevWeb.UserAuth
+
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
     plug :fetch_live_flash
     plug :put_root_layout, html: {RazzorDevWeb.Layouts, :root}
+    plug :assign_default_page_info
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug :fetch_current_user
+  end
+
+
+  def assign_default_page_info(conn, _opts) do
+    conn
+    |> assign(:locale, Gettext.get_locale())
+    |> assign(:page_title, "RazzorDev")
+    |> assign(:page_description, "RazzorDev is a blog about programming an other things.")
   end
 
   pipeline :api do
@@ -24,12 +36,16 @@ defmodule RazzorDevWeb.Router do
     pipe_through :browser
 
     get "/", PostController, :index
+
+    pipe_through :require_authenticated_user
     get "/new", PostController, :new
     post "/", PostController, :create
-    get "/:id", PostController, :show
     get "/:id/edit", PostController, :edit
     patch "/:id", PostController, :update
     delete "/:id", PostController, :delete
+
+    # Keep the catch-all route last
+    get "/:slug", PostController, :show
   end
 
   # Other scopes may use custom stacks.
@@ -51,6 +67,44 @@ defmodule RazzorDevWeb.Router do
 
       live_dashboard "/dashboard", metrics: RazzorDevWeb.Telemetry
       forward "/mailbox", Plug.Swoosh.MailboxPreview
+    end
+  end
+
+  ## Authentication routes
+
+  scope "/", RazzorDevWeb do
+    pipe_through [:browser, :redirect_if_user_is_authenticated]
+
+    live_session :redirect_if_user_is_authenticated,
+      on_mount: [{RazzorDevWeb.UserAuth, :redirect_if_user_is_authenticated}] do
+      live "/users/register", UserRegistrationLive, :new
+      live "/users/log_in", UserLoginLive, :new
+      live "/users/reset_password", UserForgotPasswordLive, :new
+      live "/users/reset_password/:token", UserResetPasswordLive, :edit
+    end
+
+    post "/users/log_in", UserSessionController, :create
+  end
+
+  scope "/", RazzorDevWeb do
+    pipe_through [:browser, :require_authenticated_user]
+
+    live_session :require_authenticated_user,
+      on_mount: [{RazzorDevWeb.UserAuth, :ensure_authenticated}] do
+      live "/users/settings", UserSettingsLive, :edit
+      live "/users/settings/confirm_email/:token", UserSettingsLive, :confirm_email
+    end
+  end
+
+  scope "/", RazzorDevWeb do
+    pipe_through [:browser]
+
+    delete "/users/log_out", UserSessionController, :delete
+
+    live_session :current_user,
+      on_mount: [{RazzorDevWeb.UserAuth, :mount_current_user}] do
+      live "/users/confirm/:token", UserConfirmationLive, :edit
+      live "/users/confirm", UserConfirmationInstructionsLive, :new
     end
   end
 end

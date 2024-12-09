@@ -1,38 +1,79 @@
-# fly.toml app configuration file generated for razzor-dev on 2024-12-02T21:31:26Z
-#
-# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
-#
-
+# The name of your Fly.io application.
 app = 'razzor-dev'
+
+# The primary region where your application will run.
+# 'gru' is São Paulo, Brazil (close to your location for low latency).
 primary_region = 'gru'
+
+# The signal used to terminate the app gracefully during shutdown.
 kill_signal = 'SIGTERM'
 
+# Section for build configuration (currently empty).
 [build]
 
+# Environment variables for your application.
 [env]
+  # The host domain for your Phoenix application.
   PHX_HOST = 'razzor.dev'
+
+  # The port your application listens on internally.
   PORT = '8080'
+
+  # Erlang cookie for distributed Erlang communication.
+  # This is used for clustering if the app is running in distributed mode.
   ERLANG_COOKIE = "JDWKgiwUea"
 
+# Configuration for the HTTP service.
 [http_service]
+  # The internal port your Phoenix app runs on.
   internal_port = 8080
+
+  # Redirect all HTTP traffic to HTTPS.
   force_https = true
+
+  # Automatically stop machines when idle to save resources.
   auto_stop_machines = 'stop'
+
+  # Automatically start machines when a request comes in.
   auto_start_machines = true
+
+  # Minimum number of machines that should always be running.
+  # '0' means no machines are running unless traffic comes in.
   min_machines_running = 0
+
+  # Specifies the processes that this service will manage.
   processes = ['app']
 
+  # Concurrency settings to manage how many connections the app can handle.
   [http_service.concurrency]
+    # Type of concurrency limit (connections-based).
     type = 'connections'
+
+    # Hard limit on concurrent connections (requests above this are rejected).
     hard_limit = 1000
+
+    # Soft limit (beyond this, Fly.io will try to autoscale if possible).
     soft_limit = 1000
 
+# Virtual Machine configuration.
 [[vm]]
+  # Memory allocation for the VM.
   memory = '1gb'
+
+  # Type of CPU (shared means resources are shared with other VMs).
   cpu_kind = 'shared'
+
+  # Number of CPU cores allocated to the VM.
   cpus = 1
+
+  # Alternative way to specify memory in MB.
   memory_mb = 1024
 
+# Deployment configuration.
 [deploy]
+  # Command to run database migrations during deployment.
+  # This ensures migrations are executed before the new release starts.
+  release_command = '/app/bin/razzor_dev eval "RazzorDev.Release.migrate()"'
+
   release_command = '/app/bin/razzor_dev eval "RazzorDev.Release.migrate()"'
 

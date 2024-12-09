@@ -16,10 +16,13 @@ import Config
 #
 # Alternatively, you can use `mix phx.gen.release` to generate a `bin/server`
 # script that automatically sets the env var above.
+
+# Enable the Phoenix server if the "PHX_SERVER" environment variable is set.
 if System.get_env("PHX_SERVER") do
   config :razzor_dev, RazzorDevWeb.Endpoint, server: true
 end
 
+# Production-specific configuration block.
 if config_env() == :prod do
   # The secret key base is used to sign/encrypt cookies and other secrets.
   # A default value is used in config/dev.exs and config/test.exs but you
@@ -33,11 +36,18 @@ if config_env() == :prod do
       You can generate one by calling: mix phx.gen.secret
       """
 
+  # Host configuration, typically set via the PHX_HOST environment variable.
   _host = System.get_env("PHX_HOST") || "razzor.dev"
+
+  # Port configuration, defaulting to 4000 if not set.
   _port = String.to_integer(System.get_env("PORT") || "4000")
+
+  # Optional DNS cluster query for distributed clustering (if applicable).
 
   config :razzor_dev, :dns_cluster_query, System.get_env("DNS_CLUSTER_QUERY")
 
+  # --- Endpoint Configuration ---
+  # Configures the endpoint for the production environment.
   config :razzor_dev, RazzorDevWeb.Endpoint,
     url: [host: System.get_env("PHX_HOST"), port: 443, scheme: "https"],
     http: [
@@ -46,6 +56,8 @@ if config_env() == :prod do
     ],
     secret_key_base: secret_key_base
 
+  # --- Database Configuration ---
+  # Configures the Ecto repository with database credentials from environment variables.
   config :razzor_dev, RazzorDev.Repo,
     url: System.get_env("DATABASE_URL"),
     pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10"),

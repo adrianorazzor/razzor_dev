@@ -33,7 +33,7 @@ defmodule RazzorDevWeb.HomeLive do
     assigns = assign_new(assigns, :links_text, fn -> gettext("links") end)
 
     ~H"""
-    <div class="flex flex-col justify-center items-start min-h-[80vh] max-w-md mx-auto">
+    <div class="flex flex-col justify-center items-center min-h-screen text-center px-4">
       <h1 class="text-4xl font-bold mb-4">{@hello_text}</h1>
       <p class="text-xl mb-4">
         {@intro_text}
@@ -41,7 +41,7 @@ defmodule RazzorDevWeb.HomeLive do
       <a href="mailto:adrianorazzor@gmail.com" class="text-gray-400 hover:text-white underline">
         {@contact_text}
       </a>
-      <div class="flex space-x-4 mt-6">
+      <div class="flex space-x-4 mt-6 justify-center">
         <a
           href="https://www.linkedin.com/in/adriano-pereira-baungardt/"
           target="_blank"

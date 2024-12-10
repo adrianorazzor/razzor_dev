@@ -74,6 +74,3 @@ kill_signal = 'SIGTERM'
   # Command to run database migrations during deployment.
   # This ensures migrations are executed before the new release starts.
   release_command = '/app/bin/razzor_dev eval "RazzorDev.Release.migrate()"'
-
-  release_command = '/app/bin/razzor_dev eval "RazzorDev.Release.migrate()"'
-

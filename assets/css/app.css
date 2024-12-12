@@ -9,3 +9,21 @@ body {
   font-optical-sizing: auto;
   font-style: normal;
 }
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink {
+  50% { border-color: transparent }
+}
+
+.typewriter {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid white;
+  animation: typing 2s steps(40, end) forwards,
+             blink 0.75s step-end infinite;
+}

@@ -34,9 +34,11 @@ defmodule RazzorDevWeb.HomeLive do
 
     ~H"""
     <div class="flex flex-col justify-center items-center min-h-screen text-center px-4">
-      <h1 class="text-4xl font-bold mb-4">{@hello_text}</h1>
+      <h1 class="text-4xl font-bold mb-4 animate-slide-in">{@hello_text}</h1>
       <p class="text-xl mb-4">
+        <span class="typewriter">
         {@intro_text}
+        </span>
       </p>
       <a href="mailto:adrianorazzor@gmail.com" class="text-gray-400 hover:text-white underline">
         {@contact_text}

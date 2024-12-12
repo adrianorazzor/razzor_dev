@@ -1,12 +1,16 @@
 <!DOCTYPE html>
-<html lang={@locale || "en" } class="dark">
+
+<html lang={@locale || "en" } x-data="{ darkMode: document.documentElement.classList.contains('dark') }">
 
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="csrf-token" content={get_csrf_token()} />
   <!-- Primary Meta Tags -->
-  <meta name="theme-color" content="#ffffff" />
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#18181b" media="(prefers-color-scheme: dark)" />
+
+
   <title>
     {@page_title || "RazzorDev"}
   </title>
@@ -31,6 +35,12 @@
   <script defer phx-track-static type="text/javascript" src={~p"/assets/app.js"}>
   </script>
   <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script>
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+
 
   <!-- Google Tag Manager -->
   <script>
@@ -45,13 +55,7 @@
   </script>
 </head>
 
-<body class="w-full bg-white dark:bg-zinc-900 text-zinc-950 dark:text-zinc-50" <!-- Google Tag Manager (noscript) -->
-  <noscript>
-    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5SFJ6N6S" height="0" width="0"
-      style="display:none;visibility:hidden">
-    </iframe>
-  </noscript>
-  <!-- End Google Tag Manager (noscript) -->
+<body class="w-full bg-white text-black dark:bg-zinc-900 dark:text-zinc-50">
   <div class="flex flex-col w-full min-h-screen">
     {@inner_content}
   </div>

@@ -1,73 +1,50 @@
 <header role="banner">
-  <nav
-    class="flex items-center justify-between p-6 lg:px-8 absolute inset-x-0 top-0 z-50"
-    aria-label="Main navigation"
-  >
+  <nav class="flex items-center justify-between p-6 lg:px-8 absolute inset-x-0 top-0 z-50" aria-label="Main navigation">
     <!-- Left Section: Name -->
     <div class="flex-1">
       <a href="/" aria-label="Home">
         <h1 class="text-lg sm:text-xl md:text-2xl font-bold">RAZZOR DEV</h1>
       </a>
     </div>
-    
-<!-- Center Section: Navigation Links (Desktop Only) -->
-    <nav
-      id="nav-links"
-      class="hidden lg:flex flex-1 justify-center items-center space-x-8"
-      role="navigation"
-      aria-label="Primary"
-    >
+
+    <!-- Center Section: Navigation Links (Desktop Only) -->
+    <nav id="nav-links" class="hidden lg:flex flex-1 justify-center items-center space-x-8" role="navigation"
+      aria-label="Primary">
       <.link navigate={~p"/blog"} class="hover:text-gray-400">Blog</.link>
       <.link navigate={~p"/blog"} class="hover:text-gray-400">Contact</.link>
       <.link navigate={~p"/blog"} class="hover:text-gray-400">About</.link>
     </nav>
-    
-<!-- Right Section: Flags and Hamburger Menu -->
+
+    <!-- Right Section: Flags, Dark Mode Toggle, and Hamburger Menu -->
     <div class="flex-1 flex justify-end items-center space-x-6">
       <!-- Flags (Desktop Only) -->
       <div class="hidden lg:flex space-x-2" aria-label="Language selector">
-        <button
-          phx-click="change_locale"
-          phx-value-locale="en"
-          aria-label="Switch to English"
-          aria-pressed={@locale == "en"}
-          class={[
-            "hover:text-gray-400 text-xl",
-            (@locale == "en" && "opacity-100") ||
-              "opacity-50"
-          ]}
-        >
+        <button phx-click="change_locale" phx-value-locale="en" aria-label="Switch to English"
+          aria-pressed={@locale=="en" } class={[ "hover:text-gray-400 text-xl" , (@locale=="en" && "opacity-100" )
+          || "opacity-50" ]}>
           <span role="img" aria-label="USA flag">🇺🇸</span>
         </button>
-        <button
-          phx-click="change_locale"
-          phx-value-locale="pt_BR"
-          aria-label="Switch to Portuguese"
-          aria-pressed={@locale == "pt_BR"}
-          class={[
-            "hover:text-gray-400 text-xl",
-            (@locale == "pt_BR" && "opacity-100") ||
-              "opacity-50"
-          ]}
-        >
+        <button phx-click="change_locale" phx-value-locale="pt_BR" aria-label="Switch to Portuguese"
+          aria-pressed={@locale=="pt_BR" } class={[ "hover:text-gray-400 text-xl" , (@locale=="pt_BR" && "opacity-100" )
+          || "opacity-50" ]}>
           <span role="img" aria-label="Brazil flag">🇧🇷</span>
         </button>
-        <button
-          phx-click="change_locale"
-          phx-value-locale="es"
-          aria-label="Switch to Spanish"
-          aria-pressed={@locale == "es"}
-          class={[
-            "hover:text-gray-400 text-xl",
-            (@locale == "es" && "opacity-100") ||
-              "opacity-50"
-          ]}
-        >
+        <button phx-click="change_locale" phx-value-locale="es" aria-label="Switch to Spanish"
+          aria-pressed={@locale=="es" } class={[ "hover:text-gray-400 text-xl" , (@locale=="es" && "opacity-100" )
+          || "opacity-50" ]}>
           <span role="img" aria-label="Spain flag">🇪🇸</span>
         </button>
       </div>
-      
-<!-- Hamburger Menu (Mobile Only) -->
+
+      <button @click="darkMode = !darkMode; document.documentElement.classList.toggle('dark', darkMode)"
+        class="text-lg">
+        <span x-show="darkMode" x-cloak>🌙 Dark Mode</span>
+        <span x-show="!darkMode" x-cloak>☀️ Light Mode</span>
+      </button>
+
+
+
+      <!-- Hamburger Menu (Mobile Only) -->
       <button id="menu-button" class="lg:hidden text-3xl" aria-label="Open Menu">
         <span class="block w-6 h-0.5 bg-white mb-1"></span>
         <span class="block w-6 h-0.5 bg-white mb-1"></span>
@@ -75,38 +52,20 @@
       </button>
     </div>
   </nav>
-  
-<!-- Mobile Menu -->
-  <div
-    id="mobile-menu"
-    class="lg:hidden hidden absolute inset-x-0 top-16 bg-gray-900 p-6 space-y-4 z-40"
-  >
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="lg:hidden hidden absolute inset-x-0 top-16 bg-gray-900 p-6 space-y-4 z-40">
     <.link navigate={~p"/blog"} class="block text-gray-300 hover:text-white">Blog</.link>
     <.link navigate={~p"/blog"} class="block text-gray-300 hover:text-white">Contact</.link>
     <.link navigate={~p"/blog"} class="block text-gray-300 hover:text-white">About</.link>
     <div class="flex space-x-2 mt-4" aria-label="Language selector">
-      <button
-        phx-click="change_locale"
-        phx-value-locale="en"
-        aria-label="Switch to English"
-        class="text-xl"
-      >
+      <button phx-click="change_locale" phx-value-locale="en" aria-label="Switch to English" class="text-xl">
         🇺🇸
       </button>
-      <button
-        phx-click="change_locale"
-        phx-value-locale="pt_BR"
-        aria-label="Switch to Portuguese"
-        class="text-xl"
-      >
+      <button phx-click="change_locale" phx-value-locale="pt_BR" aria-label="Switch to Portuguese" class="text-xl">
         🇧🇷
       </button>
-      <button
-        phx-click="change_locale"
-        phx-value-locale="es"
-        aria-label="Switch to Spanish"
-        class="text-xl"
-      >
+      <button phx-click="change_locale" phx-value-locale="es" aria-label="Switch to Spanish" class="text-xl">
         🇪🇸
       </button>
     </div>

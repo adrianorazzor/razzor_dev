@@ -8,4 +8,26 @@ body {
   font-family: "Nunito", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
+  background-color: #ffffff;
+  /* Default light background */
+  color: #000000;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #18181b;
+    /* Dark mode background (zinc-900) */
+    color: #f1f5f9;
+    /* Dark mode text (zinc-50) */
+  }
+}
+
+/* Tailwind Dark Mode Styles */
+.dark body {
+  background-color: #18181b;
+  color: #f1f5f9;
+}
+
+[x-cloak] {
+  display: none !important;
 }

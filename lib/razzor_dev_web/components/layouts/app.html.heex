@@ -36,12 +36,10 @@
         </button>
       </div>
 
-      <button @click="darkMode = !darkMode; document.documentElement.classList.toggle('dark', darkMode)"
-        class="text-lg">
-        <span x-show="darkMode" x-cloak>🌙 Dark Mode</span>
-        <span x-show="!darkMode" x-cloak>☀️ Light Mode</span>
+      <button id="dark-mode-toggle" class="text-lg">
+        <span class="dark:hidden">🌙 Dark Mode</span>
+        <span class="hidden dark:inline">☀️ Light Mode</span>
       </button>
-
 
 
       <!-- Hamburger Menu (Mobile Only) -->

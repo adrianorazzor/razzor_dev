@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang={@locale || "en" } x-data="{ darkMode: document.documentElement.classList.contains('dark') }">
+<html lang={@locale || "en" }>
 
 <head>
   <meta charset="utf-8" />
@@ -35,12 +35,6 @@
   <script defer phx-track-static type="text/javascript" src={~p"/assets/app.js"}>
   </script>
   <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-  <script>
-    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      document.documentElement.classList.add('dark');
-    }
-  </script>
-
 
   <!-- Google Tag Manager -->
   <script>

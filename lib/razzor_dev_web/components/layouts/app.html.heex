@@ -37,33 +37,56 @@
       </div>
 
       <button id="dark-mode-toggle" class="text-lg">
-        <span class="dark:hidden">🌙 Dark Mode</span>
-        <span class="hidden dark:inline">☀️ Light Mode</span>
+        <span class="dark:hidden">🌙 Dark</span>
+        <span class="hidden dark:inline">☀️ Light</span>
       </button>
 
 
       <!-- Hamburger Menu (Mobile Only) -->
       <button id="menu-button" class="lg:hidden text-3xl" aria-label="Open Menu">
-        <span class="block w-6 h-0.5 bg-white mb-1"></span>
-        <span class="block w-6 h-0.5 bg-white mb-1"></span>
-        <span class="block w-6 h-0.5 bg-white"></span>
+        <span class="block w-6 h-0.5 bg-black dark:bg-white mb-1"></span>
+        <span class="block w-6 h-0.5 bg-black dark:bg-white mb-1"></span>
+        <span class="block w-6 h-0.5 bg-black dark:bg-white"></span>
       </button>
     </div>
   </nav>
 
   <!-- Mobile Menu -->
-  <div id="mobile-menu" class="lg:hidden hidden absolute inset-x-0 top-16 bg-gray-900 p-6 space-y-4 z-40">
-    <.link navigate={~p"/blog"} class="block text-gray-300 hover:text-white">Blog</.link>
-    <.link navigate={~p"/blog"} class="block text-gray-300 hover:text-white">Contact</.link>
-    <.link navigate={~p"/blog"} class="block text-gray-300 hover:text-white">About</.link>
-    <div class="flex space-x-2 mt-4" aria-label="Language selector">
-      <button phx-click="change_locale" phx-value-locale="en" aria-label="Switch to English" class="text-xl">
+  <div id="mobile-menu"
+    class="lg:hidden fixed inset-0 dark:bg-gray-950 text-white flex-col items-start p-6 space-y-6 z-50 hidden">
+    <!-- Header with Logo and Close Button -->
+    <div class="w-full flex items-center justify-between mb-8">
+      <h1 class="text-lg sm:text-xl md:text-2xl font-bold">RAZZOR DEV</h1>
+      <button id="close-menu-button" class="text-3xl">
+        &times;
+      </button>
+    </div>
+
+    <!-- Navigation Links -->
+    <nav class="flex flex-col space-y-4">
+      <.link navigate={~p"/blog"} class="text-lg hover:text-gray-400 transition">
+        Blog
+      </.link>
+      <.link navigate={~p"/contact"} class="text-lg hover:text-gray-400 transition">
+        Contact
+      </.link>
+      <.link navigate={~p"/about"} class="text-lg hover:text-gray-400 transition">
+        About
+      </.link>
+    </nav>
+
+    <!-- Language Selector at the Bottom -->
+    <div class="mt-auto w-full flex justify-center space-x-4" aria-label="Language selector">
+      <button phx-click="change_locale" phx-value-locale="en" aria-label="Switch to English"
+        class="text-2xl hover:scale-110 transition-transform">
         🇺🇸
       </button>
-      <button phx-click="change_locale" phx-value-locale="pt_BR" aria-label="Switch to Portuguese" class="text-xl">
+      <button phx-click="change_locale" phx-value-locale="pt_BR" aria-label="Switch to Portuguese"
+        class="text-2xl hover:scale-110 transition-transform">
         🇧🇷
       </button>
-      <button phx-click="change_locale" phx-value-locale="es" aria-label="Switch to Spanish" class="text-xl">
+      <button phx-click="change_locale" phx-value-locale="es" aria-label="Switch to Spanish"
+        class="text-2xl hover:scale-110 transition-transform">
         🇪🇸
       </button>
     </div>
@@ -76,9 +99,16 @@
 
 <script>
   const menuButton = document.getElementById('menu-button');
+  const closeMenuButton = document.getElementById('close-menu-button');
   const mobileMenu = document.getElementById('mobile-menu');
 
+  // Show the mobile menu when the hamburger button is clicked
   menuButton.addEventListener('click', () => {
-    mobileMenu.classList.toggle('hidden');
+    mobileMenu.classList.remove('hidden');
+  });
+
+  // Hide the mobile menu when the close button is clicked
+  closeMenuButton.addEventListener('click', () => {
+    mobileMenu.classList.add('hidden');
   });
 </script>

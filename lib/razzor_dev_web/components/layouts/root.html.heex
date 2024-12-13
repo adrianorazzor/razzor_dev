@@ -1,58 +1,64 @@
 <!DOCTYPE html>
+<html lang={@locale || "en"}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="csrf-token" content={get_csrf_token()} />
+    <!-- Primary Meta Tags -->
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#18181b" media="(prefers-color-scheme: dark)" />
 
-<html lang={@locale || "en" }>
+    <title>
+      {@page_title || "RazzorDev"}
+    </title>
+    <meta
+      name="description"
+      content={@page_description || "RazzorDev is a blog about programming an other things"}
+    />
+    
+<!-- Preload Critical Resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
+    
+<!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href={~p"/favicon.ico"} />
+    
+<!-- Stylesheets -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha384-..."
+      crossorigin="anonymous"
+    />
+    <link phx-track-static rel="stylesheet" href={~p"/assets/app.css"} />
+    
+<!-- Application Scripts -->
+    <script defer phx-track-static type="text/javascript" src={~p"/assets/app.js"}>
+    </script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js">
+    </script>
+    
+<!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || []; w[l].push({
+          'gtm.start':
+            new Date().getTime(), event: 'gtm.js'
+        }); var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+            'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', 'GTM-5SFJ6N6S');
+    </script>
+  </head>
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="csrf-token" content={get_csrf_token()} />
-  <!-- Primary Meta Tags -->
-  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
-  <meta name="theme-color" content="#18181b" media="(prefers-color-scheme: dark)" />
-
-
-  <title>
-    {@page_title || "RazzorDev"}
-  </title>
-  <meta name="description" content={@page_description || "RazzorDev is a blog about programming an other things" } />
-
-  <!-- Preload Critical Resources -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/x-icon" href={~p"/favicon.ico"} />
-
-  <!-- Stylesheets -->
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
-    rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-    integrity="sha384-..." crossorigin="anonymous" />
-  <link phx-track-static rel="stylesheet" href={~p"/assets/app.css"} />
-
-  <!-- Application Scripts -->
-  <script defer phx-track-static type="text/javascript" src={~p"/assets/app.js"}>
-  </script>
-  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
-  <!-- Google Tag Manager -->
-  <script>
-    (function (w, d, s, l, i) {
-      w[l] = w[l] || []; w[l].push({
-        'gtm.start':
-          new Date().getTime(), event: 'gtm.js'
-      }); var f = d.getElementsByTagName(s)[0],
-        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-    })(window, document, 'script', 'dataLayer', 'GTM-5SFJ6N6S');
-  </script>
-</head>
-
-<body class="w-full bg-white text-black dark:bg-zinc-900 dark:text-zinc-50">
-  <div class="flex flex-col w-full min-h-screen">
-    {@inner_content}
-  </div>
-</body>
-
+  <body class="w-full bg-white text-black dark:bg-zinc-900 dark:text-zinc-50">
+    <div class="flex flex-col w-full min-h-screen">
+      {@inner_content}
+    </div>
+  </body>
 </html>

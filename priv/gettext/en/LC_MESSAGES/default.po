@@ -41,20 +41,29 @@ msgstr "close"
 
 #: lib/razzor_dev_web/live/home_live.html.heex:33
 #, elixir-autogen, elixir-format
-msgid "contact_me"
-msgstr "Contact me"
+msgid "contact_text"
+msgstr "Get in touch"
 
-#: lib/razzor_dev_web/live/home_live.html.heex:27
-#, elixir-autogen, elixir-format
-msgid "hello"
-msgstr "Hello"
+#: lib/razzor_dev_web/live/home_live.ex:5
+msgid "greeting_text"
+msgstr "Hi, I'm Adriano!"
 
-#: lib/razzor_dev_web/live/home_live.html.heex:30
-#, elixir-autogen, elixir-format
-msgid "intro_text"
-msgstr "My name is Adriano Baungardt, I'm a Fullstack Developer From Paraguay."
+#: lib/razzor_dev_web/live/home_live.ex:12
+msgid "short_intro"
+msgstr "Always learning, always building."
+
+#: lib/razzor_dev_web/live/home_live.ex:15
+msgid "bio_text"
+msgstr ""
+"I'm a full-stack web developer who's always looking for ways to do things "
+"better. I enjoy building web apps of all kinds and love learning new "
+"technologies. I'm currently diving into Elixir and Phoenix and exploring how "
+"AI can improve web development."
 
 #: lib/razzor_dev_web/live/home_live.html.heex:20
 #, elixir-autogen, elixir-format
 msgid "links"
 msgstr "links"
+
+msgid "skills_text"
+msgstr "Skills"

@@ -8,16 +8,26 @@ body {
   font-family: "Nunito", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
-  background-color: #ffffff;
+  background-color: #f0f4ef;
   /* Default light background */
   color: #000000;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Poppins", sans-serif;
+  /* Use Poppins for headings */
 }
 
 @media (prefers-color-scheme: dark) {
   body {
     background-color: #18181b;
     /* Dark mode background (zinc-900) */
-    color: #f1f5f9;
+    color: #f0f4ef;
     /* Dark mode text (zinc-50) */
   }
 }
@@ -25,9 +35,5 @@ body {
 /* Tailwind Dark Mode Styles */
 .dark body {
   background-color: #18181b;
-  color: #f1f5f9;
-}
-
-[x-cloak] {
-  display: none !important;
+  color: #f0f4ef;
 }

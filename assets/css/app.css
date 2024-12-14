@@ -2,15 +2,17 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-/* This file is for your main application CSS */
+/* Custom color palette */
+:root {
+  --color-dark: #18181B;
+  --color-light: #F0F4EF;
+  --color-details: #1B9AAA;
+}
 
 body {
   font-family: "Nunito", sans-serif;
-  font-optical-sizing: auto;
-  font-style: normal;
-  background-color: #f0f4ef;
-  /* Default light background */
-  color: #000000;
+  background-color: var(--color-light);
+  color: var(--color-dark);
 }
 
 h1,
@@ -20,20 +22,53 @@ h4,
 h5,
 h6 {
   font-family: "Poppins", sans-serif;
-  /* Use Poppins for headings */
 }
 
+.bg-light {
+  background-color: var(--color-light);
+}
+
+.bg-dark {
+  background-color: var(--color-dark);
+}
+
+.text-dark {
+  color: var(--color-dark);
+}
+
+.text-light {
+  color: var(--color-light);
+}
+
+.text-details {
+  color: var(--color-details);
+}
+
+.border-details {
+  border-color: var(--color-details);
+}
+
+.bg-details {
+  background-color: var(--color-details);
+}
+
+.hover\:bg-details:hover {
+  background-color: var(--color-details);
+}
+
+.hover\:text-details:hover {
+  color: var(--color-details);
+}
+
+/* Dark mode adjustments */
 @media (prefers-color-scheme: dark) {
   body {
-    background-color: #18181b;
-    /* Dark mode background (zinc-900) */
-    color: #f0f4ef;
-    /* Dark mode text (zinc-50) */
+    background-color: var(--color-dark);
+    color: var(--color-light);
   }
 }
 
-/* Tailwind Dark Mode Styles */
 .dark body {
-  background-color: #18181b;
-  color: #f0f4ef;
+  background-color: var(--color-dark);
+  color: var(--color-light);
 }

@@ -8,17 +8,10 @@ defmodule RazzorDevWeb.Router do
     plug :fetch_session
     plug :fetch_live_flash
     plug :put_root_layout, html: {RazzorDevWeb.Layouts, :root}
-    plug :assign_default_page_info
+    plug RazzorDevWeb.Plugs.AssignDefaultPageInfo
     plug :protect_from_forgery
     plug :put_secure_browser_headers
     plug :fetch_current_user
-  end
-
-  def assign_default_page_info(conn, _opts) do
-    conn
-    |> assign(:locale, Gettext.get_locale())
-    |> assign(:page_title, "RazzorDev")
-    |> assign(:page_description, "RazzorDev is a blog about programming an other things.")
   end
 
   pipeline :api do

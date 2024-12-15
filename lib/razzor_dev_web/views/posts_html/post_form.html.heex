@@ -15,7 +15,7 @@
       class="w-full bg-light dark:bg-dark text-dark dark:text-light border-details"></textarea>
     <%= for err <- f[:content].errors do %>
       <div class="form-error">
-        <%= Phoenix.HTML.Form.normalize_message(err) %>
+        <%= Phoenix.HTML.Form.normalize_value(err, :string) %>
       </div>
       <% end %>
   </div>

@@ -34,7 +34,7 @@ defmodule RazzorDevWeb.HomeLive do
 
   def skill_icon(assigns) do
     ~H"""
-    <img src={"/images/skills/#{@name}"} class={@class} />
+    <img src={"/images/skills/#{@name}"} class={@class} alt={@name} />
     """
   end
 

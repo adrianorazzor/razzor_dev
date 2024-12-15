@@ -1,5 +1,5 @@
-<header role="banner">
-  <nav class="flex items-center justify-between p-6 lg:px-8 absolute inset-x-0 top-0 z-50" aria-label="Main navigation">
+<header role="banner" class="inset-x-0 top-0 z-50">
+  <nav class="flex items-center justify-between p-6 lg:px-8" aria-label="Main navigation">
     <!-- Left Section: Name -->
     <div class="flex-1">
       <a href="/" aria-label="Home">
@@ -39,7 +39,7 @@
 
   <!-- Mobile Menu -->
   <div id="mobile-menu"
-    class="lg:hidden fixed inset-0 dark:bg-gray-950 text-white flex-col items-start p-6 space-y-6 z-50 hidden">
+    class="lg:hidden fixed inset-0 bg-details text-white flex-col items-start p-6 space-y-6 z-50 hidden">
     <!-- Header with Logo and Close Button -->
     <div class="w-full flex items-center justify-between mb-8">
       <h1 class="text-lg sm:text-xl md:text-2xl font-bold">RAZZOR DEV</h1>
@@ -74,7 +74,6 @@
   const closeMenuButton = document.getElementById('close-menu-button');
   const mobileMenu = document.getElementById('mobile-menu');
 
-  // Toggle the mobile menu visibility
   function toggleMenu() {
     mobileMenu.classList.toggle('hidden');
   }

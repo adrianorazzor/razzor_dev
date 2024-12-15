@@ -1,8 +1,14 @@
-<.header>
-  New Post
-  <:subtitle>Use this form to manage post records in your database.</:subtitle>
-</.header>
+<div class="container max-w-screen-xl mx-auto px-4 md:px-8 py-8">
+  <.header class="mb-6">
+    <h1 class="font-heading text-3xl text-dark dark:text-light">New Post</h1>
+    <:subtitle class="text-dark dark:text-light">
+      Use this form to create a new post.
+    </:subtitle>
+  </.header>
 
-<.post_form changeset={@changeset} action={~p"/blog"} />
+  <.post_form changeset={@changeset} action={~p"/blog"} class="space-y-6" />
 
-<.back navigate={~p"/blog"}>Back to posts</.back>
+  <.back navigate={~p"/blog"} class="mt-4 inline-block text-details hover:underline">
+    Back to posts
+  </.back>
+</div>

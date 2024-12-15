@@ -48,21 +48,6 @@ defmodule RazzorDev.MixProject do
       {:phoenix_live_dashboard, "~> 0.8.5"},
       {:esbuild, "~> 0.8.2", runtime: Mix.env() == :dev},
       {:tailwind, "~> 0.2.4", runtime: Mix.env() == :dev},
-      {
-        :heroicons,
-        # These two lines are essential!
-        # Make the 'assets' directory available
-        github: "tailwindlabs/heroicons",
-        tag: "v2.1.1",
-        sparse: "optimized",
-        app: false,
-        compile: true,
-        build_path: "_build",
-        deps_path: "deps",
-        source_url: "https://github.com/tailwindlabs/heroicons",
-        paths: ["lib", "priv/static"],
-        depth: 1
-      },
       {:swoosh, "~> 1.5"},
       {:finch, "~> 0.19"},
       {:telemetry_metrics, "~> 1.0"},

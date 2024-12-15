@@ -71,10 +71,13 @@ defmodule RazzorDevWeb.HomeLive do
         <ul class="flex flex-wrap justify-center gap-3 md:gap-4">
           <li
             :for={{skill, _index} <- Enum.with_index(@skills)}
-            class="group flex items-center gap-x-2 rounded-xl border border-details px-4 py-2 shadow-sm transition-colors duration-200 hover:bg-details hover:text-details"
+            class="group flex items-center gap-x-2 rounded-xl border border-details px-4 py-2 shadow-sm transition-all duration-200 hover:bg-details hover:text-light"
           >
             <div class="relative h-5 w-5 flex-shrink-0">
-              <.skill_icon name={skill.icon} class="text-details" />
+              <.skill_icon
+                name={skill.icon}
+                class="transition-colors duration-200 group-hover:text-light"
+              />
             </div>
             <span class="font-medium text-sm md:text-base">
               {skill.name}
@@ -87,7 +90,7 @@ defmodule RazzorDevWeb.HomeLive do
       <div class="mb-10 md:mb-12">
         <.link
           href="mailto:adrianorazzor@gmail.com"
-          class="px-6 py-3 font-bold text-light bg-details hover:bg-light hover:text-details transition duration-200 rounded-full md:px-8 md:py-4"
+          class="px-6 py-3 font-bold bg-details hover:bg-light hover:text-details transition duration-200 rounded-full md:px-8 md:py-4"
         >
           {@contact_text}
         </.link>
@@ -99,7 +102,7 @@ defmodule RazzorDevWeb.HomeLive do
           href="https://www.linkedin.com/in/adriano-pereira-baungardt/"
           target="_blank"
           rel="noopener noreferrer"
-          class="text-details hover:text-white"
+          class="text-details hover:text-dark"
         >
           <i class="fab fa-linkedin text-3xl md:text-4xl"></i>
         </.link>
@@ -107,7 +110,7 @@ defmodule RazzorDevWeb.HomeLive do
           href="https://github.com/adrianorazzor"
           target="_blank"
           rel="noopener noreferrer"
-          class="text-details hover:text-light"
+          class="text-details hover:text-dark"
         >
           <i class="fab fa-github text-3xl md:text-4xl"></i>
         </.link>
@@ -115,7 +118,7 @@ defmodule RazzorDevWeb.HomeLive do
           href="https://www.instagram.com/adrianorz/"
           target="_blank"
           rel="noopener noreferrer"
-          class="text-details hover:text-light"
+          class="text-details hover:text-dark"
         >
           <i class="fab fa-instagram text-3xl md:text-4xl"></i>
         </.link>

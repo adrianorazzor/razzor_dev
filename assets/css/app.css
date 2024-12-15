@@ -4,8 +4,8 @@
 
 /* Custom color palette */
 :root {
-  --color-dark: #18181B;
   --color-light: #F0F4EF;
+  --color-dark: #18181B;
   --color-details: #1B9AAA;
 }
 
@@ -22,53 +22,4 @@ h4,
 h5,
 h6 {
   font-family: "Poppins", sans-serif;
-}
-
-.bg-light {
-  background-color: var(--color-light);
-}
-
-.bg-dark {
-  background-color: var(--color-dark);
-}
-
-.text-dark {
-  color: var(--color-dark);
-}
-
-.text-light {
-  color: var(--color-light);
-}
-
-.text-details {
-  color: var(--color-details);
-}
-
-.border-details {
-  border-color: var(--color-details);
-}
-
-.bg-details {
-  background-color: var(--color-details);
-}
-
-.hover\:bg-details:hover {
-  background-color: var(--color-details);
-}
-
-.hover\:text-details:hover {
-  color: var(--color-details);
-}
-
-/* Dark mode adjustments */
-@media (prefers-color-scheme: dark) {
-  body {
-    background-color: var(--color-dark);
-    color: var(--color-light);
-  }
-}
-
-.dark body {
-  background-color: var(--color-dark);
-  color: var(--color-light);
 }

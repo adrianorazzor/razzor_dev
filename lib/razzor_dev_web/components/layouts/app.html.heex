@@ -15,37 +15,24 @@
       <.link navigate={~p"/blog"} class="hover:text-gray-400">About</.link>
     </nav>
 
-    <!-- Right Section: Flags, Dark Mode Toggle, and Hamburger Menu -->
+    <!-- Right Section: Flags, and Hamburger Menu -->
     <div class="flex-1 flex justify-end items-center space-x-6">
       <!-- Flags (Desktop Only) -->
       <div class="hidden lg:flex space-x-2" aria-label="Language selector">
-        <button phx-click="change_locale" phx-value-locale="en" aria-label="Switch to English"
-          aria-pressed={@locale=="en" } class={[ "hover:text-gray-400 text-xl" , (@locale=="en" && "opacity-100" )
-          || "opacity-50" ]}>
-          <span role="img" aria-label="USA flag">🇺🇸</span>
-        </button>
-        <button phx-click="change_locale" phx-value-locale="pt_BR" aria-label="Switch to Portuguese"
-          aria-pressed={@locale=="pt_BR" } class={[ "hover:text-gray-400 text-xl" , (@locale=="pt_BR" && "opacity-100" )
-          || "opacity-50" ]}>
-          <span role="img" aria-label="Brazil flag">🇧🇷</span>
-        </button>
-        <button phx-click="change_locale" phx-value-locale="es" aria-label="Switch to Spanish"
-          aria-pressed={@locale=="es" } class={[ "hover:text-gray-400 text-xl" , (@locale=="es" && "opacity-100" )
-          || "opacity-50" ]}>
-          <span role="img" aria-label="Spain flag">🇵🇾</span>
-        </button>
+        <%= for {locale, flag} <- [{"en", "🇺🇸" }, {"pt_BR", "🇧🇷" }, {"es", "🇵🇾" }] do %>
+          <button phx-click="change_locale" phx-value-locale={locale} aria-label={"Switch to " <> locale}
+            aria-pressed={@locale == locale} class={[" hover:text-gray-400 text-xl", @locale==locale && "opacity-100"
+            || "opacity-50" ]}>
+            <span role="img" aria-label={locale <> " flag"}><%= flag %></span>
+          </button>
+          <% end %>
       </div>
-
-      <button id="dark-mode-toggle" class="text-lg">
-        <span class="dark:hidden">🌙 Dark</span>
-        <span class="hidden dark:inline">☀️ Light</span>
-      </button>
 
       <!-- Hamburger Menu (Mobile Only) -->
       <button id="menu-button" class="lg:hidden text-3xl" aria-label="Open Menu">
-        <span class="block w-6 h-0.5 bg-black dark:bg-white mb-1"></span>
-        <span class="block w-6 h-0.5 bg-black dark:bg-white mb-1"></span>
-        <span class="block w-6 h-0.5 bg-black dark:bg-white"></span>
+        <span class="block w-6 h-0.5 bg-black mb-1"></span>
+        <span class="block w-6 h-0.5 bg-black mb-1"></span>
+        <span class="block w-6 h-0.5 bg-black"></span>
       </button>
     </div>
   </nav>
@@ -56,38 +43,24 @@
     <!-- Header with Logo and Close Button -->
     <div class="w-full flex items-center justify-between mb-8">
       <h1 class="text-lg sm:text-xl md:text-2xl font-bold">RAZZOR DEV</h1>
-      <button id="close-menu-button" class="text-3xl">
-        &times;
-      </button>
+      <button id="close-menu-button" class="text-3xl">&times;</button>
     </div>
 
     <!-- Navigation Links -->
     <nav class="flex flex-col space-y-4">
-      <.link navigate={~p"/blog"} class="text-lg hover:text-gray-400 transition">
-        Blog
-      </.link>
-      <.link navigate={~p"/blog"} class="text-lg hover:text-gray-400 transition">
-        Contact
-      </.link>
-      <.link navigate={~p"/blog"} class="text-lg hover:text-gray-400 transition">
-        About
-      </.link>
+      <.link navigate={~p"/blog"} class="text-lg hover:text-gray-400 transition">Blog</.link>
+      <.link navigate={~p"/blog"} class="text-lg hover:text-gray-400 transition">Contact</.link>
+      <.link navigate={~p"/blog"} class="text-lg hover:text-gray-400 transition">About</.link>
     </nav>
 
     <!-- Language Selector at the Bottom -->
     <div class="mt-auto w-full flex justify-center space-x-4" aria-label="Language selector">
-      <button phx-click="change_locale" phx-value-locale="en" aria-label="Switch to English"
-        class="text-2xl hover:scale-110 transition-transform">
-        🇺🇸
-      </button>
-      <button phx-click="change_locale" phx-value-locale="pt_BR" aria-label="Switch to Portuguese"
-        class="text-2xl hover:scale-110 transition-transform">
-        🇧🇷
-      </button>
-      <button phx-click="change_locale" phx-value-locale="es" aria-label="Switch to Spanish"
-        class="text-2xl hover:scale-110 transition-transform">
-        🇵🇾
-      </button>
+      <%= for {locale, flag} <- [{"en", "🇺🇸" }, {"pt_BR", "🇧🇷" }, {"es", "🇵🇾" }] do %>
+        <button phx-click="change_locale" phx-value-locale={locale} aria-label={"Switch to " <> locale} class=" text-2xl
+          hover:scale-110 transition-transform">
+          <%= flag %>
+        </button>
+        <% end %>
     </div>
   </div>
 </header>
@@ -101,13 +74,11 @@
   const closeMenuButton = document.getElementById('close-menu-button');
   const mobileMenu = document.getElementById('mobile-menu');
 
-  // Show the mobile menu when the hamburger button is clicked
-  menuButton.addEventListener('click', () => {
-    mobileMenu.classList.remove('hidden');
-  });
+  // Toggle the mobile menu visibility
+  function toggleMenu() {
+    mobileMenu.classList.toggle('hidden');
+  }
 
-  // Hide the mobile menu when the close button is clicked
-  closeMenuButton.addEventListener('click', () => {
-    mobileMenu.classList.add('hidden');
-  });
+  menuButton.addEventListener('click', toggleMenu);
+  closeMenuButton.addEventListener('click', toggleMenu);
 </script>

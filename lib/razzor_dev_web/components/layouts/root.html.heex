@@ -5,15 +5,11 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="csrf-token" content={get_csrf_token()} />
-  <!-- Primary Meta Tags -->
-  <meta name="theme-color" content="#f0f4ef" media="(prefers-color-scheme: light)" />
-  <meta name="theme-color" content="#18181b" media="(prefers-color-scheme: dark)" />
 
   <title>
     {@page_title || "RazzorDev"}
   </title>
-  <meta name="description" content={@page_description || "RazzorDev is a blog about programming an other things" } />
-
+  <meta name="description" content={@page_description || "RazzorDev is a blog about programming and other things" } />
 
   <!-- Preload Critical Resources -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -31,24 +27,14 @@
   <link phx-track-static rel="stylesheet" href={~p"/assets/app.css"} />
 
   <!-- Application Scripts -->
-  <script defer phx-track-static type="text/javascript" src={~p"/assets/app.js"}>
-  </script>
+  <script defer phx-track-static type="text/javascript" src={~p"/assets/app.js"}></script>
 
   <!-- Google Tag Manager -->
-  <script>
-    (function (w, d, s, l, i) {
-      w[l] = w[l] || []; w[l].push({
-        'gtm.start':
-          new Date().getTime(), event: 'gtm.js'
-      }); var f = d.getElementsByTagName(s)[0],
-        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-    })(window, document, 'script', 'dataLayer', 'GTM-5SFJ6N6S');
-  </script>
+  <script src={~p"/assets/gtm.js"}></script>
 </head>
 
-<body class="w-full bg-white text-black dark:bg-zinc-900 dark:text-zinc-50">
-  <div class="flex flex-col w-full min-h-screen">
+<body class="w-full text-dark">
+  <div class="flex flex-col min-h-screen">
     {@inner_content}
   </div>
 </body>

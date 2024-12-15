@@ -19,6 +19,11 @@ module.exports = {
         heading: ['Poppins', 'sans-serif'],
 
       },
+      colors: {
+        light: 'var(--color-light)', // Use CSS variables
+        dark: 'var(--color-dark)',
+        details: 'var(--color-details)',
+      }
     },
     plugins: [
       require("@tailwindcss/forms"),

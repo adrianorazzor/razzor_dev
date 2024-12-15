@@ -3,46 +3,44 @@ defmodule RazzorDevWeb.HomeLive do
   use Gettext, backend: RazzorDevWeb.Gettext
 
   def mount(_params, _session, socket) do
-    socket =
-      socket
-      |> assign(:page_title, "Home - RazzorDev")
-      |> assign(:page_description, "Adriano Baungardt personal website")
-      |> assign(:locale, Gettext.get_locale())
-      |> assign(:gretting_text, gettext("greeting_text"))
-      |> assign(:short_intro, gettext("short_intro"))
-      |> assign(:bio_text, gettext("bio_text"))
-      |> assign(:skills_text, gettext("skills_text"))
-      |> assign(:contact_text, gettext("contact_text"))
-      |> assign(:links_text, gettext("links"))
-      |> assign(:skills, [
-        %{name: "Java", icon: "java.svg"},
-        %{name: "Flutter", icon: "flutter.svg"},
-        %{name: "Phoenix", icon: "phoenix.svg"},
-        %{name: "PostgreSQL", icon: "postgresql.svg"}
-      ])
-
+    socket = assign_defaults(socket)
     {:ok, socket}
   end
 
   def handle_event("change_locale", %{"locale" => locale}, socket) do
     Gettext.put_locale(locale)
-
-    socket =
-      socket
-      |> assign(:locale, locale)
-      |> assign(:gretting_text, gettext("greeting_text"))
-      |> assign(:short_intro, gettext("short_intro"))
-      |> assign(:bio_text, gettext("bio_text"))
-      |> assign(:skills_text, gettext("skills_text"))
-      |> assign(:contact_text, gettext("contact_text"))
-      |> assign(:links_text, gettext("links"))
-
+    socket = assign_defaults(socket, locale)
     {:noreply, socket}
+  end
+
+  def assign_defaults(socket, locale \\ Gettext.get_locale()) do
+    socket
+    |> assign(:page_title, "Home - RazzorDev")
+    |> assign(:page_description, "Adriano Baungardt personal website")
+    |> assign(:locale, locale)
+    |> assign(:gretting_text, gettext("greeting_text"))
+    |> assign(:short_intro, gettext("short_intro"))
+    |> assign(:bio_text, gettext("bio_text"))
+    |> assign(:skills_text, gettext("skills_text"))
+    |> assign(:contact_text, gettext("contact_text"))
+    |> assign(:links_text, gettext("links"))
+    |> assign(:skills, [
+      %{name: "Java", icon: "java.svg"},
+      %{name: "Flutter", icon: "flutter.svg"},
+      %{name: "Phoenix", icon: "phoenix.svg"},
+      %{name: "PostgreSQL", icon: "postgresql.svg"}
+    ])
+  end
+
+  def skill_icon(assigns) do
+    ~H"""
+    <img src={"/images/skills/#{@name}"} class={@class} />
+    """
   end
 
   def render(assigns) do
     ~H"""
-    <div class="flex min-h-screen flex-col items-center justify-center px-6 py-24 text-center font-sans bg-light dark:bg-dark text-dark dark:text-light">
+    <div class="flex min-h-screen flex-col items-center justify-center px-6 py-24 text-center font-sans">
       <!-- Profile Picture -->
       <div class="mb-10 md:mb-12">
         <img
@@ -73,7 +71,7 @@ defmodule RazzorDevWeb.HomeLive do
         <ul class="flex flex-wrap justify-center gap-3 md:gap-4">
           <li
             :for={{skill, _index} <- Enum.with_index(@skills)}
-            class="group flex items-center gap-x-2 rounded-xl border border-details px-4 py-2 shadow-sm transition-colors duration-200 hover:bg-details hover:text-light dark:hover:text-dark"
+            class="group flex items-center gap-x-2 rounded-xl border border-details px-4 py-2 shadow-sm transition-colors duration-200 hover:bg-details hover:text-details"
           >
             <div class="relative h-5 w-5 flex-shrink-0">
               <.skill_icon name={skill.icon} class="text-details" />
@@ -101,7 +99,7 @@ defmodule RazzorDevWeb.HomeLive do
           href="https://www.linkedin.com/in/adriano-pereira-baungardt/"
           target="_blank"
           rel="noopener noreferrer"
-          class="text-details hover:text-light dark:hover:text-dark"
+          class="text-details hover:text-white"
         >
           <i class="fab fa-linkedin text-3xl md:text-4xl"></i>
         </.link>
@@ -109,7 +107,7 @@ defmodule RazzorDevWeb.HomeLive do
           href="https://github.com/adrianorazzor"
           target="_blank"
           rel="noopener noreferrer"
-          class="text-details hover:text-light dark:hover:text-dark"
+          class="text-details hover:text-light"
         >
           <i class="fab fa-github text-3xl md:text-4xl"></i>
         </.link>
@@ -117,18 +115,12 @@ defmodule RazzorDevWeb.HomeLive do
           href="https://www.instagram.com/adrianorz/"
           target="_blank"
           rel="noopener noreferrer"
-          class="text-details hover:text-light dark:hover:text-dark"
+          class="text-details hover:text-light"
         >
           <i class="fab fa-instagram text-3xl md:text-4xl"></i>
         </.link>
       </div>
     </div>
-    """
-  end
-
-  def skill_icon(assigns) do
-    ~H"""
-    <img src={"/images/skills/#{@name}"} class={@class} />
     """
   end
 end

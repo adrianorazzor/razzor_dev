@@ -5,8 +5,16 @@
 /* Custom color palette */
 :root {
   --color-light: #F0F4EF;
+  /* Light color */
+
   --color-dark: #18181B;
-  --color-details: #1B9AAA;
+  /* Dark color */
+
+  --color-accent: #1B9AAA;
+  /* Accent or primary detail color */
+
+  --color-accent-dark: #2E7D97;
+  /* Darker shade of accent color */
 }
 
 body {
@@ -22,4 +30,12 @@ h4,
 h5,
 h6 {
   font-family: "Poppins", sans-serif;
+}
+
+.social-link {
+  color: var(--color-accent);
+}
+
+.social-link:hover {
+  color: var(--color-accent-dark);
 }

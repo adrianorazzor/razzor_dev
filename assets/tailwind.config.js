@@ -20,9 +20,11 @@ module.exports = {
 
       },
       colors: {
-        light: 'var(--color-light)', // Use CSS variables
+        light: 'var(--color-light)',
         dark: 'var(--color-dark)',
-        details: 'var(--color-details)',
+        accent: 'var(--color-accent)',
+        accentDark: 'var(--color-accent-dark)',
+
       }
     },
     plugins: [

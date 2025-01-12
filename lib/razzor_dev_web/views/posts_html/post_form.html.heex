@@ -5,31 +5,59 @@
     </div>
   </.error>
 
-  <.input field={f[:title]} type="text" label="Title"
-    class="w-full bg-light dark:bg-dark text-dark dark:text-light border-details" />
-  <.input field={f[:author]} type="text" label="Author"
-    class="w-full bg-light dark:bg-dark text-dark dark:text-light border-details" />
+  <.input
+    field={f[:title]}
+    type="text"
+    label="Title"
+    class="w-full bg-light dark:bg-dark text-dark dark:text-light border-details"
+  />
+  <.input
+    field={f[:author]}
+    type="text"
+    label="Author"
+    class="w-full bg-light dark:bg-dark text-dark dark:text-light border-details"
+  />
   <div class="form-group">
     <label for={f[:content].id} class="form-label">Content</label>
-    <textarea id={f[:content].id} name={f[:content].name} value={f[:content].value} rows="10"
-      class="w-full bg-light dark:bg-dark text-dark dark:text-light border-details"></textarea>
+    <textarea
+      id={f[:content].id}
+      name={f[:content].name}
+      value={f[:content].value}
+      rows="10"
+      class="w-full bg-light dark:bg-dark text-dark dark:text-light border-details"
+    ></textarea>
     <%= for err <- f[:content].errors do %>
       <div class="form-error">
-        <%= Phoenix.HTML.Form.normalize_value(err, :string) %>
+        {Phoenix.HTML.Form.normalize_value(err, :string)}
       </div>
-      <% end %>
+    <% end %>
   </div>
 
-  <.input field={f[:tags]} type="text" label="Tags (comma-separated)"
-    class="w-full bg-light dark:bg-dark text-dark dark:text-light border-details" />
-  <.input field={f[:published]} type="checkbox" label="Published"
-    class="w-full bg-light dark:bg-dark text-dark dark:text-light border-details" />
-  <.input field={f[:slug]} type="text" label="Slug"
-    class="w-full bg-light dark:bg-dark text-dark dark:text-light border-details" />
+  <.input
+    field={f[:tags]}
+    type="text"
+    label="Tags (comma-separated)"
+    class="w-full bg-light dark:bg-dark text-dark dark:text-light border-details"
+  />
+  <.input
+    field={f[:published]}
+    type="checkbox"
+    label="Published"
+    class="w-full bg-light dark:bg-dark text-dark dark:text-light border-details"
+  />
+  <.input
+    field={f[:slug]}
+    type="text"
+    label="Slug"
+    class="w-full bg-light dark:bg-dark text-dark dark:text-light border-details"
+  />
 
-  <.input field={f[:published_at]} type="datetime-local" label="Published at"
-    class="w-full bg-light dark:bg-dark text-dark dark:text-light border-details" />
+  <.input
+    field={f[:published_at]}
+    type="datetime-local"
+    label="Published at"
+    class="w-full bg-light dark:bg-dark text-dark dark:text-light border-details"
+  />
 
-  <:actions>
-  </:actions>
+  <:actions></:actions>
 </.simple_form>

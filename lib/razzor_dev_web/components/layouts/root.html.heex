@@ -1,42 +1,51 @@
 <!DOCTYPE html>
-<html lang={@locale || "en" }>
+<html lang={@locale || "en"}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="csrf-token" content={get_csrf_token()} />
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="csrf-token" content={get_csrf_token()} />
+    <title>
+      {@page_title || "RazzorDev"}
+    </title>
+    <meta
+      name="description"
+      content={@page_description || "RazzorDev is a blog about programming and other things"}
+    />
+    
+<!-- Preload Critical Resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
+    
+<!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href={~p"/favicon.ico"} />
+    
+<!-- Stylesheets -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&family=Poppins:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha384-..."
+      crossorigin="anonymous"
+    />
+    <link phx-track-static rel="stylesheet" href={~p"/assets/app.css"} />
+    
+<!-- Application Scripts -->
+    <script defer phx-track-static src={~p"/assets/app.js"}>
+    </script>
+    
+<!-- Google Tag Manager -->
+    <script src={~p"/assets/gtm.js"}>
+    </script>
+  </head>
 
-  <title>
-    {@page_title || "RazzorDev"}
-  </title>
-  <meta name="description" content={@page_description || "RazzorDev is a blog about programming and other things" } />
-
-  <!-- Preload Critical Resources -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/x-icon" href={~p"/favicon.ico"} />
-
-  <!-- Stylesheets -->
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&family=Poppins:wght@400;700&display=swap"
-    rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-    integrity="sha384-..." crossorigin="anonymous" />
-  <link phx-track-static rel="stylesheet" href={~p"/assets/app.css"} />
-
-  <!-- Application Scripts -->
-  <script defer phx-track-static src={~p"/assets/app.js"}></script>
-
-  <!-- Google Tag Manager -->
-  <script src={~p"/assets/gtm.js"}></script>
-</head>
-
-<body class="w-full text-dark">
-  <div class="flex flex-col min-h-screen">
-    {@inner_content}
-  </div>
-</body>
-
+  <body class="w-full text-dark">
+    <div class="flex flex-col min-h-screen">
+      {@inner_content}
+    </div>
+  </body>
 </html>

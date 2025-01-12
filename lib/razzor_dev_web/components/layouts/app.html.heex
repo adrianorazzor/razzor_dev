@@ -6,28 +6,40 @@
         <h1 class="text-lg sm:text-xl md:text-2xl font-bold hover:text-accentDark">RAZZOR DEV</h1>
       </a>
     </div>
-
-    <!-- Center Section: Navigation Links (Desktop Only) -->
-    <nav id="nav-links" class="hidden lg:flex flex-1 justify-center items-center space-x-8" aria-label="Primary">
+    
+<!-- Center Section: Navigation Links (Desktop Only) -->
+    <nav
+      id="nav-links"
+      class="hidden lg:flex flex-1 justify-center items-center space-x-8"
+      aria-label="Primary"
+    >
       <.link navigate={~p"/blog"} class="hover:text-gray-400">Blog</.link>
       <.link navigate={~p"/blog"} class="hover:text-gray-400">Contact</.link>
       <.link navigate={~p"/blog"} class="hover:text-gray-400">About</.link>
     </nav>
-
-    <!-- Right Section: Flags, and Hamburger Menu -->
+    
+<!-- Right Section: Flags, and Hamburger Menu -->
     <div class="flex-1 flex justify-end items-center space-x-6">
       <!-- Flags (Desktop Only) -->
       <div class="hidden lg:flex space-x-2">
         <%= for {locale, flag} <- [{"en", "🇺🇸" }, {"pt_BR", "🇧🇷" }, {"es", "🇵🇾" }] do %>
-          <button phx-click="change_locale" phx-value-locale={locale} aria-label={"Switch to " <> locale}
-            aria-pressed={@locale == locale} class={[" hover:text-gray-400 text-xl", @locale==locale && "opacity-100"
-            || "opacity-50" ]}>
-            <span role="img" aria-label={locale <> " flag"}><%= flag %></span>
+          <button
+            phx-click="change_locale"
+            phx-value-locale={locale}
+            aria-label={"Switch to " <> locale}
+            aria-pressed={@locale == locale}
+            class={[
+              " hover:text-gray-400 text-xl",
+              (@locale == locale && "opacity-100") ||
+                "opacity-50"
+            ]}
+          >
+            <span role="img" aria-label={locale <> " flag"}>{flag}</span>
           </button>
-          <% end %>
+        <% end %>
       </div>
-
-      <!-- Hamburger Menu (Mobile Only) -->
+      
+<!-- Hamburger Menu (Mobile Only) -->
       <button id="menu-button" class="lg:hidden text-3xl" aria-label="Open Menu">
         <span class="block w-6 h-0.5 bg-black mb-1"></span>
         <span class="block w-6 h-0.5 bg-black mb-1"></span>
@@ -35,31 +47,38 @@
       </button>
     </div>
   </nav>
-
-  <!-- Mobile Menu -->
-  <div id="mobile-menu"
-    class="lg:hidden fixed inset-0 bg-accent text-white flex-col items-start p-4 space-y-6 z-50 hidden">
+  
+<!-- Mobile Menu -->
+  <div
+    id="mobile-menu"
+    class="lg:hidden fixed inset-0 bg-accent text-white flex-col items-start p-4 space-y-6 z-50 hidden"
+  >
     <!-- Header with Logo and Close Button -->
     <div class="w-full flex items-center justify-between mb-8">
       <span class="text-lg sm:text-xl md:text-2xl font-extrabold">RAZZOR DEV</span>
       <button id="close-menu-button" class="text-3xl">&times;</button>
     </div>
-
-    <!-- Navigation Links -->
+    
+<!-- Navigation Links -->
     <nav class="flex flex-col space-y-4">
       <.link navigate={~p"/blog"} class="text-lg hover:text-gray-400 transition">Blog</.link>
       <.link navigate={~p"/blog"} class="text-lg hover:text-gray-400 transition">Contact</.link>
       <.link navigate={~p"/blog"} class="text-lg hover:text-gray-400 transition">About</.link>
     </nav>
-
-    <!-- Language Selector at the Bottom -->
+    
+<!-- Language Selector at the Bottom -->
     <div class="mt-auto w-full flex justify-center space-x-4">
       <%= for {locale, flag} <- [{"en", "🇺🇸" }, {"pt_BR", "🇧🇷" }, {"es", "🇵🇾" }] do %>
-        <button phx-click="change_locale" phx-value-locale={locale} aria-label={"Switch to " <> locale} class=" text-2xl
-          hover:scale-110 transition-transform">
-          <%= flag %>
+        <button
+          phx-click="change_locale"
+          phx-value-locale={locale}
+          aria-label={"Switch to " <> locale}
+          class=" text-2xl
+          hover:scale-110 transition-transform"
+        >
+          {flag}
         </button>
-        <% end %>
+      <% end %>
     </div>
   </div>
 </header>
